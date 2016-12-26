@@ -22,4 +22,4 @@ Tästäkin taas lisää myöhemmin.
 
 Tässä tämän hetken luokkakaavio:
 
-![Alt text](Dokumentaatio/TTetrisLuokkaKaavio1.jpg)
+![Alt text](TTetrisLuokkaKaavio1.jpg)
