@@ -3,13 +3,13 @@ package tommitetris.t.tetris;
 class Tetrispeli {
 
     private Kaivo kaivo;
-    private RandomPala randomoija;
-    private Pala pala;
+    private RandomTetrimino randomoija;
+    private Tetrimino tetrimino;
 
     public Tetrispeli() {
         this.kaivo = new Kaivo(10, 20);
-        this.randomoija = new RandomPala();
-        this.pala = this.randomoija.annaRandomPala();
+        this.randomoija = new RandomTetrimino();
+        this.tetrimino = this.randomoija.annaRandomTetrimino();
     }
 
     public Kaivo getKaivo() {
@@ -17,10 +17,10 @@ class Tetrispeli {
     }
     
     public void aloita() {
-        this.kaivo.annaPala(this.pala);
-        this.kaivo.palaKaivoon();
+        this.kaivo.annaTetrimino(this.tetrimino);
+        this.kaivo.tetriminoKaivoon();
         this.kaivo.tulostaKaivo();
-        this.kaivo.palaAlas();
+        this.kaivo.tetriminoAlas();
         this.kaivo.tulostaKaivo();
     }
 

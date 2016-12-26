@@ -1,18 +1,18 @@
 package tommitetris.t.tetris;
 
-public class I extends Pala {
+public class I extends Tetrimino {
 
     public I() {
         super();
-        luoLaatikot();
+        luoPalat();
     }
 
     @Override
-    public void luoLaatikot() {
+    public void luoPalat() {
         for (int i = 0; i < 4; i++) {
-            Laatikko laatikko = new Laatikko(i, 0);
+            Pala laatikko = new Pala(i, 0);
             laatikko.setMerkki("[I]");
-            super.getLaatikot().add(laatikko);
+            super.getPalat().add(laatikko);
         }
     }
 

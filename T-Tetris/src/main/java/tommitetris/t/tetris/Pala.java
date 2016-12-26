@@ -1,28 +1,42 @@
 package tommitetris.t.tetris;
 
-import java.util.ArrayList;
-import java.util.List;
+public class Pala {
 
-public abstract class Pala {
+    private int x;
+    private int y;
+    private String merkki;
 
-    private List<Laatikko> laatikot;
-
-    public Pala() {
-        this.laatikot = new ArrayList();
+    public Pala(int x, int y) {
+        this.x = x;
+        this.y = y;
+        this.merkki = "[]";
     }
 
-    public void luoLaatikot() {
+    public int getX() {
+        return x;
     }
 
-    public List<Laatikko> getLaatikot() {
-        return this.laatikot;
+    public void setX(int x) {
+        this.x = x;
     }
 
-    public int aloitusPaikanKeskittaja() {
-        //Palan ensimmäinen laatikko aloittaa kaivossa yleensä joko yhden 
-        // tai kaksi palaa kaivon keskikohdasta, mutta olkoon oletuksen
-        // 2 ja poikkeuksen tullessa voi pala Overrideta tämän metodin.
-        return 2;
+    public int getY() {
+        return y;
     }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    public void setMerkki(String merkki) {
+        this.merkki = merkki;
+    }
+
+    @Override
+    public String toString() {
+        return merkki;
+    }
+    
+    
 
 }

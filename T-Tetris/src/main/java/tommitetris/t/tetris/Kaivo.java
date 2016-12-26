@@ -4,16 +4,16 @@ public class Kaivo {
 
     private int leveys;
     private int korkeus;
-    private Laatikko[][] ruudukko;
-    private Pala pala;
+    private Pala[][] ruudukko;
+    private Tetrimino tetrimino;
 
     public Kaivo(int leveys, int korkeus) {
         this.leveys = leveys;
         this.korkeus = korkeus;
-        ruudukko = new Laatikko[leveys][korkeus];
+        ruudukko = new Pala[leveys][korkeus];
     }
 
-    public Laatikko[][] getRuudukko() {
+    public Pala[][] getRuudukko() {
         return ruudukko;
     }
 
@@ -31,41 +31,41 @@ public class Kaivo {
         System.out.println();
     }
 
-    public void annaPala(Pala pala) {
-        this.pala = pala;
+    public void annaTetrimino(Tetrimino tetrimino) {
+        this.tetrimino = tetrimino;
     }
 
-    public void palaKaivoon() {
-        int aloituskohta = this.leveys / 2 - this.pala.aloitusPaikanKeskittaja();
-        for (Laatikko laatikko : this.pala.getLaatikot()) {
+    public void tetriminoKaivoon() {
+        int aloituskohta = this.leveys / 2 - this.tetrimino.aloitusPaikanKeskittaja();
+        for (Pala laatikko : this.tetrimino.getPalat()) {
             laatikko.setX(laatikko.getX() + aloituskohta);
             System.out.println(laatikko.getX() + "," + laatikko.getY());
         }
-        palaRuudukkoon();
+        tetriminoRuudukkoon();
     }
 
-    private void palaRuudukkoon() {
-        for (Laatikko laatikko : this.pala.getLaatikot()) {
+    private void tetriminoRuudukkoon() {
+        for (Pala laatikko : this.tetrimino.getPalat()) {
             this.ruudukko[laatikko.getX()][laatikko.getY()] = laatikko;
         }
     }
 
-    public void palaAlas() {
-        palaPoisRuudukosta();
-        palaAlempanaRuudukkoon();
+    public void tetriminoAlas() {
+        tetriminoPoisRuudukosta();
+        tetriminoAlempanaRuudukkoon();
     }
 
-    private void palaPoisRuudukosta() {
-        for (Laatikko laatikko : this.pala.getLaatikot()) {
+    private void tetriminoPoisRuudukosta() {
+        for (Pala laatikko : this.tetrimino.getPalat()) {
             this.ruudukko[laatikko.getX()][laatikko.getY()] = null;
         }
     }
 
-    private void palaAlempanaRuudukkoon() {
-        for (Laatikko laatikko : this.pala.getLaatikot()) {
+    private void tetriminoAlempanaRuudukkoon() {
+        for (Pala laatikko : this.tetrimino.getPalat()) {
             laatikko.setY(laatikko.getY() + 1);
         }
-        palaRuudukkoon();
+        tetriminoRuudukkoon();
     }
 
 }
