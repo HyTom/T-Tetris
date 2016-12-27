@@ -5,9 +5,9 @@ import ttetris.logiikka.Tetrispeli;
 public class Main {
 
     public static void main(String[] args) {
-        //Tällä hetkellä pelissä on vain yksi tetris pala jonka voi
-        //lisätä pelikentälle ja liikuttaa alaspäin. Useita samanlaisia voi
-        //myös lisätä pelikentälle ja liikuttaa alas.
+        //Tällä hetkellä peli tulostaa pelikentän johon se
+        //on lisännyt tetris-palan. Sen jälkeen se tulostaa uuden ruudukon
+        //jossa pala on tippunut askeleen alas.
         Tetrispeli peli = new Tetrispeli();
         peli.aloita();
     }
