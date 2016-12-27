@@ -1,6 +1,8 @@
-package tommitetris.t.tetris;
+package ttetris.logiikka;
 
-class Tetrispeli {
+import ttetris.tetriminot.Tetrimino;
+
+public class Tetrispeli {
 
     private Kaivo kaivo;
     private RandomTetrimino randomoija;
@@ -15,9 +17,25 @@ class Tetrispeli {
     public Kaivo getKaivo() {
         return kaivo;
     }
+
+    public Tetrimino getTetrimino() {
+        return tetrimino;
+    }
+
+    public void setTetrimino(Tetrimino tetrimino) {
+        this.tetrimino = tetrimino;
+    }
+    
+    
+
+    public RandomTetrimino getRandomoija() {
+        return randomoija;
+    }
+    
     
     public void aloita() {
-        this.kaivo.annaTetrimino(this.tetrimino);
+        //tällä hetkellä vain testaa että tetrimino tippuu alas
+        this.kaivo.setTetrimino(this.tetrimino);
         this.kaivo.tetriminoKaivoon();
         this.kaivo.tulostaKaivo();
         this.kaivo.tetriminoAlas();

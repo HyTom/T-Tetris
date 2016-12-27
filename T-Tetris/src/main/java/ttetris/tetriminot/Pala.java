@@ -1,4 +1,4 @@
-package tommitetris.t.tetris;
+package ttetris.tetriminot;
 
 public class Pala {
 
@@ -29,6 +29,7 @@ public class Pala {
     }
 
     public void setMerkki(String merkki) {
+        //Korvataan myöhemmin värillä
         this.merkki = merkki;
     }
 

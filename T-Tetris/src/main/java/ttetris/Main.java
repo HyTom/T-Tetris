@@ -1,6 +1,6 @@
-package tommitetris.t.tetris;
+package ttetris;
 
-import java.util.Arrays;
+import ttetris.logiikka.Tetrispeli;
 
 public class Main {
 
@@ -10,3 +10,4 @@ public class Main {
     }
 
 }
+

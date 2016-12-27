@@ -23,3 +23,8 @@ Tästäkin taas lisää myöhemmin.
 Tässä tämän hetken luokkakaavio:
 
 ![Alt text](TTetrisLuokkaKaavio1.jpg)
+
+Kuvassa on laitettu abstrakti luokka Tetrimino ja sen perilliset eli kaikki
+eri tetrispalikat laatikkoon jotta ei tarvitsisi tehdä miljoonaa viivaa.
+Tetriminon perilliset perivät Tetriminolta listan Paloista, en ole varma
+täytyisikö silloinkin perillisistäkin piirtää viiva Palaan.

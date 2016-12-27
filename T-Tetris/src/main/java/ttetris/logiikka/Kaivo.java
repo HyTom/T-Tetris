@@ -1,4 +1,7 @@
-package tommitetris.t.tetris;
+package ttetris.logiikka;
+
+import ttetris.tetriminot.Pala;
+import ttetris.tetriminot.Tetrimino;
 
 public class Kaivo {
 
@@ -18,6 +21,7 @@ public class Kaivo {
     }
 
     public void tulostaKaivo() {
+        //käytetään testauksessa
         for (int y = 0; y < this.korkeus; y++) {
             for (int x = 0; x < this.leveys; x++) {
                 if (this.ruudukko[x][y] == null) {
@@ -31,22 +35,25 @@ public class Kaivo {
         System.out.println();
     }
 
-    public void annaTetrimino(Tetrimino tetrimino) {
+    public void setTetrimino(Tetrimino tetrimino) {
         this.tetrimino = tetrimino;
+    }
+
+    public Tetrimino getTetrimino() {
+        return tetrimino;
     }
 
     public void tetriminoKaivoon() {
         int aloituskohta = this.leveys / 2 - this.tetrimino.aloitusPaikanKeskittaja();
-        for (Pala laatikko : this.tetrimino.getPalat()) {
-            laatikko.setX(laatikko.getX() + aloituskohta);
-            System.out.println(laatikko.getX() + "," + laatikko.getY());
+        for (Pala pala : this.tetrimino.getPalat()) {
+            pala.setX(pala.getX() + aloituskohta);
         }
         tetriminoRuudukkoon();
     }
 
     private void tetriminoRuudukkoon() {
-        for (Pala laatikko : this.tetrimino.getPalat()) {
-            this.ruudukko[laatikko.getX()][laatikko.getY()] = laatikko;
+        for (Pala pala : this.tetrimino.getPalat()) {
+            this.ruudukko[pala.getX()][pala.getY()] = pala;
         }
     }
 
@@ -56,14 +63,14 @@ public class Kaivo {
     }
 
     private void tetriminoPoisRuudukosta() {
-        for (Pala laatikko : this.tetrimino.getPalat()) {
-            this.ruudukko[laatikko.getX()][laatikko.getY()] = null;
+        for (Pala pala : this.tetrimino.getPalat()) {
+            this.ruudukko[pala.getX()][pala.getY()] = null;
         }
     }
 
     private void tetriminoAlempanaRuudukkoon() {
-        for (Pala laatikko : this.tetrimino.getPalat()) {
-            laatikko.setY(laatikko.getY() + 1);
+        for (Pala pala : this.tetrimino.getPalat()) {
+            pala.setY(pala.getY() + 1);
         }
         tetriminoRuudukkoon();
     }
