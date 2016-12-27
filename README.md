@@ -2,7 +2,8 @@
 
 Tetris Grand Masteria jäljittelevä java-tetris.
 
-	**Dokumentaatio**
+**Dokumentaatio**
 
 [Aiheen kuvaus ja rakenne](Dokumentaatio/Aihemaarittely.md)
+
 [Tuntikirjanpito](Dokumentaatio/tuntikirjanpito.md)
