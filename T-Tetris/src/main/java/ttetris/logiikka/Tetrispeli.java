@@ -25,21 +25,36 @@ public class Tetrispeli {
     public void setTetrimino(Tetrimino tetrimino) {
         this.tetrimino = tetrimino;
     }
-    
-    
 
     public RandomTetrimino getRandomoija() {
         return randomoija;
     }
-    
-    
+
     public void aloita() {
         //tällä hetkellä vain testaa että tetrimino tippuu alas
-        this.kaivo.setTetrimino(this.tetrimino);
-        this.kaivo.tetriminoKaivoon();
-        this.kaivo.tulostaKaivo();
-        this.kaivo.tetriminoAlas();
-        this.kaivo.tulostaKaivo();
+        peliAlkaa();
+    }
+
+    private void peliAlkaa() {
+        boolean pelipaattyy = false;
+        int level = -1;
+        while (!pelipaattyy) {
+
+            if (this.kaivo.getTetrimino() == null) {
+                this.kaivo.setTetrimino(this.tetrimino);
+                this.tetrimino = this.randomoija.annaRandomTetrimino();
+                pelipaattyy = this.kaivo.tetriminoKaivoon();
+                level++;
+                System.out.println("LEVEL : " + level);
+            }
+
+            this.kaivo.tulostaKaivo();
+
+            if (!pelipaattyy) {
+                this.kaivo.tetriminoAlas();
+            }
+        }
+        System.out.println("Peli on paattynyt!");
     }
 
 }
