@@ -19,9 +19,9 @@ public abstract class Tetrimino {
     }
 
     public int aloitusPaikanKeskittaja() {
-        //Tetrinimon ensimmäinen laatikko aloittaa kaivossa yleensä joko yhden 
-        // tai kaksi palaa kaivon keskikohdasta vasemmalle, mutta olkoon oletuksen
-        // 2 ja poikkeuksen tullessa voi tetrimino Overrideta tämän metodin.
+        //Tetrinimon ensimmäinen laatikko aloittaa kaivossa aina
+        //kaksi palaa vasemmalle, paitsi tetrimino o.
+        //O voi korvata tämän metodin ykkösellä.
         return 2;
     }
 
