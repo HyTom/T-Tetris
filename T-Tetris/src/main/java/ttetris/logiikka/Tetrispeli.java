@@ -39,7 +39,6 @@ public class Tetrispeli {
         boolean pelipaattyy = false;
         int level = -1;
         while (!pelipaattyy) {
-
             if (this.kaivo.getTetrimino() == null) {
                 this.kaivo.setTetrimino(this.tetrimino);
                 this.tetrimino = this.randomoija.annaRandomTetrimino();
@@ -47,6 +46,8 @@ public class Tetrispeli {
                 level++;
                 System.out.println("LEVEL : " + level);
             }
+            this.kaivo.tetriminoVastapaivaan();
+            this.kaivo.tetriminoVasemmalle();
 
             this.kaivo.tulostaKaivo();
 

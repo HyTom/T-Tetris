@@ -23,4 +23,34 @@ public class RandomTetriminoTest {
         assertEquals("[0,0][1,0][2,0][3,0]",random.annaI().toString());
     }
     
+    @Test
+    public void antaaOikeinTetriminonJ() {
+        assertEquals("[0,0][1,0][2,0][2,1]",random.annaJ().toString());
+    }
+    
+    @Test
+    public void antaaOikeinTetriminonL() {
+        assertEquals("[0,0][1,0][2,0][0,1]",random.annaL().toString());
+    }
+    
+    @Test
+    public void antaaOikeinTetriminonO() {
+        assertEquals("[0,0][1,0][0,1][1,1]",random.annaO().toString());
+    }
+    
+    @Test
+    public void antaaOikeinTetriminonS() {
+        assertEquals("[1,0][2,0][0,1][1,1]",random.annaS().toString());
+    }
+    
+    @Test
+    public void antaaOikeinTetriminonT() {
+        assertEquals("[0,0][1,0][2,0][1,1]",random.annaT().toString());
+    }
+    
+    @Test
+    public void antaaOikeinTetriminonZ() {
+        assertEquals("[0,0][1,0][1,1][2,1]",random.annaZ().toString());
+    }
+    
 }
