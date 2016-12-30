@@ -19,10 +19,10 @@ public class RandomTetrimino {
     }
 
     public Tetrimino annaRandomTetrimino() {
-//        int luku = this.random.nextInt(7);
-//        if (luku == 0) {
-//            return annaI();
-//        }
+        int luku = this.random.nextInt(3);
+        if (luku == 0) {
+            return annaI();
+        }
 //        if (luku == 1) {
 //            return annaJ();
 //        }
@@ -35,11 +35,11 @@ public class RandomTetrimino {
 //        if (luku == 4) {
 //            return annaZ();
 //        }
-//        if (luku == 5) {
-//            return annaT();
-//        }
-//        return annaO();
-        return annaT();
+        if (luku == 1) {
+            return annaT();
+        }
+        return annaO();
+
     }
 
     public I annaI() {

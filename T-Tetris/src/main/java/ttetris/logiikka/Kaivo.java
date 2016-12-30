@@ -55,7 +55,10 @@ public class Kaivo {
 
     public boolean tetriminoKaivoon() {
         //Palauttaa true jos peli päättyy eli
-        //tetromino osuu toiseen tullessaan alas
+        //tetrimino osuu toiseen tullessaan alas
+        //paitsi että peli ei loppuu ainoastaan sillon kun pala
+        //menee päällekkäin toisen kanssa, nyt riittää kosketus alhaalla.
+        //Korjataan jossain kohtaa.
         int aloituskohta = this.leveys / 2 - this.tetrimino.aloitusPaikanKeskittaja();
         for (Pala pala : this.tetrimino.getPalat()) {
             pala.setX(pala.getX() + aloituskohta);
@@ -85,11 +88,13 @@ public class Kaivo {
 
     private void tetriminoPoisRuudukosta() {
         for (Pala pala : this.tetrimino.getPalat()) {
+            System.out.println(pala.getX() + "," + pala.getY());
             if (pala.getY() > 0) {
                 this.ruudukko[pala.getX()][pala.getY()] = null;
             } else {
                 Pala katto = new Pala(pala.getX(), pala.getY());
                 katto.setMerkki("   ");
+                System.out.println(pala.getX() + "," + pala.getY());
                 this.ruudukko[pala.getX()][pala.getY()] = katto;
             }
         }
@@ -122,20 +127,18 @@ public class Kaivo {
     }
 
     public void tetriminoVastapaivaan() {
-        System.out.println("Katsotaan voiko kaantua");
         String voiko = voiKaantuaVastapaivaan();
         if (!voiko.equals("ei")) {
             tetriminoPoisRuudukosta();
             if (voiko.equals("vasemmalle")) {
-                tetriminoVasemmalle();
+                this.tetrimino.vasemmalle();
                 voiko = "voi";
             }
             if (voiko.equals("oikealle")) {
-                tetriminoOikealle();
+                this.tetrimino.oikealle();
                 voiko = "voi";
             }
             if (voiko.equals("voi")) {
-                this.tetriminoPoisRuudukosta();
                 this.tetrimino.kaannaMyotapaivaan();
                 tetriminoRuudukkoon();
             }
@@ -143,33 +146,32 @@ public class Kaivo {
     }
 
     public void tetriminoMyotapaivaan() {
-        System.out.println("Katsotaan voiko kaantua");
         String voiko = voiKaantuaMyotapaivaan();
         if (!voiko.equals("ei")) {
             tetriminoPoisRuudukosta();
+            this.tetrimino.kaannaMyotapaivaan();
             if (voiko.equals("vasemmalle")) {
-                tetriminoVasemmalle();
+                this.tetrimino.vasemmalle();
                 voiko = "voi";
             }
             if (voiko.equals("oikealle")) {
-                tetriminoOikealle();
+                this.tetrimino.oikealle();
                 voiko = "voi";
             }
             if (voiko.equals("voi")) {
-                this.tetriminoPoisRuudukosta();
-                this.tetrimino.kaannaMyotapaivaan();
                 tetriminoRuudukkoon();
             }
         }
     }
 
     public void tetriminoOikealle() {
-        boolean voiliikkua = true;
-        for (Pala pala : this.tetrimino.getPalat()) {
-            if (pala.getX() + 1 > this.leveys - 1) {
-                voiliikkua = false;
-            }
+        boolean voiliikkua = false;
+        this.tetrimino.oikealle();
+
+        if (this.voikoTetriminoOllaTassa()) {
+            voiliikkua = true;
         }
+        this.tetrimino.vasemmalle();
         if (voiliikkua) {
             tetriminoPoisRuudukosta();
             this.tetrimino.oikealle();
@@ -178,12 +180,13 @@ public class Kaivo {
     }
 
     public void tetriminoVasemmalle() {
-        boolean voiliikkua = true;
-        for (Pala pala : this.tetrimino.getPalat()) {
-            if (pala.getX() - 1 < 0) {
-                voiliikkua = false;
-            }
+        boolean voiliikkua = false;
+        this.tetrimino.vasemmalle();
+
+        if (this.voikoTetriminoOllaTassa()) {
+            voiliikkua = true;
         }
+        this.tetrimino.oikealle();
         if (voiliikkua) {
             tetriminoPoisRuudukosta();
             this.tetrimino.vasemmalle();
@@ -228,36 +231,63 @@ public class Kaivo {
         for (Pala pala : this.tetrimino.getPalat()) {
             if (pala.getX() < 0 | pala.getX() > this.leveys - 1
                     | pala.getY() < 0 | pala.getY() > this.korkeus - 1) {
+
                 return false;
             }
+            if (this.ruudukko[pala.getX()][pala.getY()] != null) {
+                if (!this.ruudukko[pala.getX()][pala.getY()].toString().equals("   ")
+                        & !this.tetrimino.getPalat().contains(this.ruudukko[pala.getX()][pala.getY()])) {
+                    return false;
+                }
+            }
         }
-        System.out.println("Voi kääntyä!");
+        System.out.println("Voi olla tassa");
         return true;
     }
 
     private String voiKaantuaMuualla() {
         if (this.tetrimino.getClass() == I.class) {
-            System.out.println("Ei voi koska I");
             return "ei";
         }
-        boolean onnistuukoOikeampana = true;
-        for (Pala pala : this.tetrimino.getPalat()) {
-            if (pala.getX() + 1 > this.leveys | pala.getX() + 1 < 0) {
-                onnistuukoOikeampana = false;
-                System.out.println("Ei onnistu oikeammalla");
-            }
-        }
-        if (onnistuukoOikeampana) {
+        if (onnistuukoOikeampana()) {
             return "oikealle";
-        } else {
-            for (Pala pala : this.tetrimino.getPalat()) {
-                if (pala.getX() - 1 > this.leveys | pala.getX() < 0) {
-                    return "ei";
+        }
+        if (onnistuukoVasempana()) {
+            return "vasemmalle";
+        }
+        return "ei";
+    }
+
+    private boolean onnistuukoVasempana() {
+        for (Pala pala : this.tetrimino.getPalat()) {
+            if (pala.getX() - 1 > this.leveys - 1 | pala.getX() - 1 < 0) {
+                return false;
+            }
+            if (this.ruudukko[pala.getX() - 1][pala.getY()] != null) {
+                if (!this.ruudukko[pala.getX() - 1][pala.getY()].toString().equals("   ")
+                        && !this.tetrimino.getPalat().contains(this.ruudukko[pala.getX() - 1][pala.getY()])) {
+                    System.out.println(pala.getX() + "," + pala.getY());
+                    return false;
                 }
             }
         }
-        System.out.println("Onnistuu vasemmalla!");
-        return "vasemmalle";
+        return true;
+    }
+
+    private boolean onnistuukoOikeampana() {
+        for (Pala pala : this.tetrimino.getPalat()) {
+            if (pala.getX() + 1 > this.leveys - 1 | pala.getX() + 1 < 0) {
+                return false;
+            }
+            if (this.ruudukko[pala.getX() + 1][pala.getY()] != null) {
+                if (!this.ruudukko[pala.getX() + 1][pala.getY()].toString().equals("   ")
+                        && !this.tetrimino.getPalat().contains(this.ruudukko[pala.getX() + 1][pala.getY()])) {
+                    System.out.println(pala.getX() + "," + pala.getY());
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
 }

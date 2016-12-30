@@ -8,4 +8,5 @@ Päivä | Tunnit | Kuvaus
 28.12.2016 | 5h | Luotiin puuttuvat Tetris-palat ja lisättiin peliin lisää logiikkaa. Peli voi vihdoin päättyä ja se tunnistaa jos palikka osuu toiseen palikkaan. Seuraavaksi palojen pyöritys ja x-suunnassa liikkuminen.
 29.12.2016 | 2h | Luotiin testejä
 29.12.2016 | 7h | Tetriksen toiminnan pohtimista ja logiikan lisäystä. Yksi pala pyörii halutusti ja palat eivät mene seinien läpi. 
+30.12.2016 | 4h | Logiikan hiomista
 ... | ... | ...

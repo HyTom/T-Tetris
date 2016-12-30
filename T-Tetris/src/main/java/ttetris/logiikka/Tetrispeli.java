@@ -46,12 +46,14 @@ public class Tetrispeli {
                 level++;
                 System.out.println("LEVEL : " + level);
             }
-            this.kaivo.tetriminoVastapaivaan();
-            this.kaivo.tetriminoVasemmalle();
 
             this.kaivo.tulostaKaivo();
 
             if (!pelipaattyy) {
+                this.kaivo.tetriminoVastapaivaan();
+                this.kaivo.tulostaKaivo();
+                this.kaivo.tetriminoVasemmalle();
+                this.kaivo.tulostaKaivo();
                 this.kaivo.tetriminoAlas();
             }
         }
