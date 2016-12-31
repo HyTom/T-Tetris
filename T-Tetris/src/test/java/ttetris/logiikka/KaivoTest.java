@@ -22,8 +22,9 @@ public class KaivoTest {
 
     @Test
     public void syntyessaRuudukko() {
-        Pala[][] ruudukko = new Pala[10][20];
-        Assert.assertArrayEquals(ruudukko, kaivo.getRuudukko());
+        Pala[][] ruudukko = new Pala[10][21];
+        assertEquals(ruudukko.length, kaivo.getRuudukko().length);
+        assertEquals(ruudukko[0].length, kaivo.getRuudukko()[0].length);
     }
 
     @Test
@@ -31,7 +32,7 @@ public class KaivoTest {
         I i = new I();
         kaivo.setTetrimino(i);
         kaivo.tetriminoKaivoon();
-        assertEquals("[3,0][4,0][5,0][6,0]", kaivo.getTetrimino().toString());
+        assertEquals("[3,1][4,1][5,1][6,1]", kaivo.getTetrimino().toString());
     }
 
     @Test
@@ -40,7 +41,7 @@ public class KaivoTest {
         kaivo.setTetrimino(i);
         kaivo.tetriminoKaivoon();
         kaivo.tetriminoAlas();
-        assertEquals("[3,1][4,1][5,1][6,1]", kaivo.getTetrimino().toString());
+        assertEquals("[3,2][4,2][5,2][6,2]", kaivo.getTetrimino().toString());
     }
 
     @Test
@@ -49,11 +50,12 @@ public class KaivoTest {
         kaivo.setTetrimino(i);
         kaivo.tetriminoKaivoon();
         Pala[][] ruudukko = kaivo.getRuudukko();
-        assertEquals(null, ruudukko[2][0]);
-        assertEquals("[I]", ruudukko[3][0].toString());
-        assertEquals("[I]", ruudukko[4][0].toString());
-        assertEquals("[I]", ruudukko[5][0].toString());
-        assertEquals("[I]", ruudukko[6][0].toString());
+        assertEquals("   ", ruudukko[2][0].toString());
+        assertEquals(null, ruudukko[3][2]);
+        assertEquals("[I]", ruudukko[3][1].toString());
+        assertEquals("[I]", ruudukko[4][1].toString());
+        assertEquals("[I]", ruudukko[5][1].toString());
+        assertEquals("[I]", ruudukko[6][1].toString());
     }
 
     @Test
@@ -63,11 +65,12 @@ public class KaivoTest {
         kaivo.tetriminoKaivoon();
         kaivo.tetriminoAlas();
         Pala[][] ruudukko = kaivo.getRuudukko();
-        assertEquals(null, ruudukko[3][0]);
-        assertEquals("[I]", ruudukko[3][1].toString());
-        assertEquals("[I]", ruudukko[4][1].toString());
-        assertEquals("[I]", ruudukko[5][1].toString());
-        assertEquals("[I]", ruudukko[6][1].toString());
+        assertEquals("   ", ruudukko[3][0].toString());
+        assertEquals(null, ruudukko[3][1]);
+        assertEquals("[I]", ruudukko[3][2].toString());
+        assertEquals("[I]", ruudukko[4][2].toString());
+        assertEquals("[I]", ruudukko[5][2].toString());
+        assertEquals("[I]", ruudukko[6][2].toString());
     }
 
     public void tiputaKaivoonO() {

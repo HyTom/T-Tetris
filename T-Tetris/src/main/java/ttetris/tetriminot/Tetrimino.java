@@ -10,7 +10,7 @@ public abstract class Tetrimino {
     public Tetrimino() {
         this.palat = new ArrayList();
     }
-    
+
     protected void luoKaantumiset() {
     }
 
@@ -36,22 +36,22 @@ public abstract class Tetrimino {
         }
         return tostring;
     }
-    
+
     public void kaannaVastapaivaan() {
     }
-    
+
     public void kaannaMyotapaivaan() {
     }
-    
+
     public void oikealle() {
         for (Pala pala : this.getPalat()) {
-                pala.setX(pala.getX() + 1);
-            }
+            pala.setX(pala.getX() + 1);
+        }
     }
-    
+
     public void vasemmalle() {
         for (Pala pala : this.getPalat()) {
-                pala.setX(pala.getX() - 1);
-            }
+            pala.setX(pala.getX() - 1);
+        }
     }
 }

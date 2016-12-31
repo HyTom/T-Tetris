@@ -25,8 +25,8 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2016</copyright>
     <item>
-      <title>File: 7,
-             Errors: 0,
+      <title>File: 13,
+             Errors: 2,
              Warnings: 0,
              Infos: 0
       </title>
@@ -46,20 +46,6 @@ under the License.
           <tbody>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#ttetris.logiikka.RandomTetrimino.java">ttetris/logiikka/RandomTetrimino.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="${project.url}/checkstyle.html#ttetris.logiikka.Kaivo.java">ttetris/logiikka/Kaivo.java</a>
                 </td>
                 <td>
@@ -69,12 +55,12 @@ under the License.
                   0
                 </td>
                 <td>
-                  0
+                  1
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#ttetris.tetriminot.Pala.java">ttetris/tetriminot/Pala.java</a>
+                  <a href="${project.url}/checkstyle.html#ttetris.tetriminot.T.java">ttetris/tetriminot/T.java</a>
                 </td>
                 <td>
                   0
@@ -103,6 +89,104 @@ under the License.
                           <tr>
                 <td>
                   <a href="${project.url}/checkstyle.html#ttetris.logiikka.Tetrispeli.java">ttetris/logiikka/Tetrispeli.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#ttetris.tetriminot.J.java">ttetris/tetriminot/J.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#ttetris.tetriminot.Z.java">ttetris/tetriminot/Z.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#ttetris.logiikka.RandomTetrimino.java">ttetris/logiikka/RandomTetrimino.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#ttetris.tetriminot.L.java">ttetris/tetriminot/L.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#ttetris.tetriminot.S.java">ttetris/tetriminot/S.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#ttetris.tetriminot.Pala.java">ttetris/tetriminot/Pala.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#ttetris.tetriminot.O.java">ttetris/tetriminot/O.java</a>
                 </td>
                 <td>
                   0

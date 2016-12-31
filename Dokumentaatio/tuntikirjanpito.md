@@ -9,4 +9,5 @@ Päivä | Tunnit | Kuvaus
 29.12.2016 | 2h | Luotiin testejä
 29.12.2016 | 7h | Tetriksen toiminnan pohtimista ja logiikan lisäystä. Yksi pala pyörii halutusti ja palat eivät mene seinien läpi. 
 30.12.2016 | 4h | Logiikan hiomista
+31.12.2016 | 2h | I palikka toimii, deadlineen valmistumista, aikataulun vuoksi testit jäivät vajaiksi tavotteista, testit paremmassa kunnossa ensi deadlineen mennessä.
 ... | ... | ...

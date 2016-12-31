@@ -20,7 +20,7 @@ public class RandomTetrimino {
 
     public Tetrimino annaRandomTetrimino() {
         int luku = this.random.nextInt(3);
-        if (luku == 0) {
+       if (luku == 0) {
             return annaI();
         }
 //        if (luku == 1) {

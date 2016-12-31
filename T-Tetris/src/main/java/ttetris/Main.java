@@ -1,6 +1,7 @@
 package ttetris;
 
 import ttetris.logiikka.Tetrispeli;
+import ttetris.tetriminot.I;
 
 public class Main {
 

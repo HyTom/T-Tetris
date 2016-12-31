@@ -34,9 +34,9 @@ public class TetrispeliTest {
         peli.setTetrimino(random.annaI());
         peli.getKaivo().setTetrimino(peli.getTetrimino());
         peli.getKaivo().tetriminoKaivoon();
-        assertEquals("[3,0][4,0][5,0][6,0]", peli.getTetrimino().toString());
-        peli.getKaivo().tetriminoAlas();
         assertEquals("[3,1][4,1][5,1][6,1]", peli.getTetrimino().toString());
+        peli.getKaivo().tetriminoAlas();
+        assertEquals("[3,2][4,2][5,2][6,2]", peli.getTetrimino().toString());
     }
 
 }
