@@ -10,11 +10,14 @@ TGM:n kaltaisen ja normi tetriksestä eriävän pelistä tekee sen oma palikan
 kääntö systeemi, jossa palat aloittavat aina "väärinpäin". 
 Palikalla on aina pala alimmassa mahdollisessa
 kohdassaan, esimerkiksi T:n eri kääntymiset ovat omituisia:
----------|---------|---------|---------
-1:	 |2:	   |3:	     |4:
-[ ][ ][ ]|[ ][T][ ]|[ ][ ][ ]|[ ][T][ ]
-[T][T][T]|[ ][T][T]|[ ][T][ ]|[T][T][ ]
-[ ][T][ ]|[ ][T][ ]|[T][T][T]|[ ][T][ ]
+
+1:--------------2:--------------3:--------------4:-------
+---
+[ ][ ][ ]-------[ ][T][ ]-------[ ][ ][ ]-------[ ][T][ ]
+---
+[T][T][T]-------[ ][T][T]-------[ ][T][ ]-------[T][T][ ]
+---
+[ ][T][ ]-------[ ][T][ ]-------[T][T][T]-------[ ][T][ ]
 
 Koska T menee kolmannessa vaiheessa "istumaan", ei voida vain laittaa
 muita kuin keskikohdan palaa pyörimään keskikohdan ympärillä. Pala voi
