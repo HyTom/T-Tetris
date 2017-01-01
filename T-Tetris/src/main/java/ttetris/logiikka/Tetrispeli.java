@@ -31,7 +31,6 @@ public class Tetrispeli {
     }
 
     public void aloita() {
-        //tällä hetkellä vain testaa että tetrimino tippuu alas
         peliAlkaa();
     }
 
@@ -42,7 +41,7 @@ public class Tetrispeli {
             if (this.kaivo.getTetrimino() == null) {
                 this.kaivo.setTetrimino(this.tetrimino);
                 this.tetrimino = this.randomoija.annaRandomTetrimino();
-                pelipaattyy = this.kaivo.tetriminoKaivoon();
+                pelipaattyy = this.kaivo.uusiTetriminoKaivoon();
                 level++;
                 System.out.println("LEVEL : " + level);
             }
@@ -50,9 +49,18 @@ public class Tetrispeli {
             this.kaivo.tulostaKaivo();
 
             if (!pelipaattyy) {
-                this.kaivo.tetriminoVastapaivaan();
-                this.kaivo.tulostaKaivo();
-                this.kaivo.tetriminoVasemmalle();
+                int luku1 = this.randomoija.annaRandomLukuValilta(2);
+                if (luku1 == 0) {
+                    this.kaivo.tetriminoMyotapaivaan();
+                } else {
+                    this.kaivo.tetriminoVastapaivaan();
+                }
+                int luku2 = this.randomoija.annaRandomLukuValilta(2);
+                if (luku2 == 0) {
+                    this.kaivo.tetriminoOikealle();
+                } else {
+                    this.kaivo.tetriminoVasemmalle();
+                }
                 this.kaivo.tulostaKaivo();
                 this.kaivo.tetriminoAlas();
             }

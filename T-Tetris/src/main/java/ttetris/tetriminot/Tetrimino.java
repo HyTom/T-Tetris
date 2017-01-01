@@ -54,4 +54,16 @@ public abstract class Tetrimino {
             pala.setX(pala.getX() - 1);
         }
     }
+
+    public void alas() {
+        for (Pala pala : this.getPalat()) {
+            pala.setY(pala.getY() + 1);
+        }
+    }
+    
+    public void ylos() {
+        for (Pala pala : this.getPalat()) {
+            pala.setY(pala.getY() - 1);
+        }
+    }
 }

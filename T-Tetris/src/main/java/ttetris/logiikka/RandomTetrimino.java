@@ -76,4 +76,8 @@ public class RandomTetrimino {
         O o = new O();
         return o;
     }
+    
+    public int annaRandomLukuValilta(int i) {
+        return random.nextInt(i);
+    }
 }

@@ -31,7 +31,7 @@ public class KaivoTest {
     public void tetriminoMeneeOikeinRuudukkoon() {
         I i = new I();
         kaivo.setTetrimino(i);
-        kaivo.tetriminoKaivoon();
+        kaivo.uusiTetriminoKaivoon();
         assertEquals("[3,1][4,1][5,1][6,1]", kaivo.getTetrimino().toString());
     }
 
@@ -39,7 +39,7 @@ public class KaivoTest {
     public void tetriminoTippuuAskeleenAlas() {
         I i = new I();
         kaivo.setTetrimino(i);
-        kaivo.tetriminoKaivoon();
+        kaivo.uusiTetriminoKaivoon();
         kaivo.tetriminoAlas();
         assertEquals("[3,2][4,2][5,2][6,2]", kaivo.getTetrimino().toString());
     }
@@ -48,7 +48,7 @@ public class KaivoTest {
     public void tetriminoIOnRuudukossa() {
         I i = new I();
         kaivo.setTetrimino(i);
-        kaivo.tetriminoKaivoon();
+        kaivo.uusiTetriminoKaivoon();
         Pala[][] ruudukko = kaivo.getRuudukko();
         assertEquals("   ", ruudukko[2][0].toString());
         assertEquals(null, ruudukko[3][2]);
@@ -62,7 +62,7 @@ public class KaivoTest {
     public void tetriminoIOnRuudukossaTiputtuaanAskeleenAlas() {
         I i = new I();
         kaivo.setTetrimino(i);
-        kaivo.tetriminoKaivoon();
+        kaivo.uusiTetriminoKaivoon();
         kaivo.tetriminoAlas();
         Pala[][] ruudukko = kaivo.getRuudukko();
         assertEquals("   ", ruudukko[3][0].toString());
@@ -76,7 +76,7 @@ public class KaivoTest {
     public void tiputaKaivoonO() {
         O o = new O();
         kaivo.setTetrimino(o);
-        kaivo.tetriminoKaivoon();
+        kaivo.uusiTetriminoKaivoon();
     }
 
     @Test
@@ -117,6 +117,6 @@ public class KaivoTest {
         }
         I i = new I();
         kaivo.setTetrimino(i);
-        assertEquals(true, kaivo.tetriminoKaivoon());
+        assertEquals(true, kaivo.uusiTetriminoKaivoon());
     }
 }
