@@ -3,18 +3,18 @@ listan. Muuten normaali tetris, ei käytä The Tetris Companyn uusimpia
 sääntölisäyksiä kuten vaihtopalikkaa, mutta jos aikaa on sen voi lisätä
 pelimoodiksi. Haluan tehdä päämoodista Tetris Grand Master ykkösen kaltaisen.
 
-[http://kitaru.1101b.com/TGMGUIDE/](Tärkeä aiheeseen liittyvä linkki)
+[Tärkeä aiheeseen liittyvä linkki](http://kitaru.1101b.com/TGMGUIDE/)
 
 **Palikan kääntäminen**
 TGM:n kaltaisen ja normi tetriksestä eriävän pelistä tekee sen oma palikan 
 kääntö systeemi, jossa palat aloittavat aina "väärinpäin". 
 Palikalla on aina pala alimmassa mahdollisessa
 kohdassaan, esimerkiksi T:n eri kääntymiset ovat omituisia:
-
-1:		2:		3:		4:
-[ ][ ][ ]	[ ][T][ ]	[ ][ ][ ]	[ ][T][ ]
-[T][T][T]	[ ][T][T]	[ ][T][ ]	[T][T][ ]
-[ ][T][ ]	[ ][T][ ]	[T][T][T]	[ ][T][ ]
+---------|---------|---------|---------
+1:	 |2:	   |3:	     |4:
+[ ][ ][ ]|[ ][T][ ]|[ ][ ][ ]|[ ][T][ ]
+[T][T][T]|[ ][T][T]|[ ][T][ ]|[T][T][ ]
+[ ][T][ ]|[ ][T][ ]|[T][T][T]|[ ][T][ ]
 
 Koska T menee kolmannessa vaiheessa "istumaan", ei voida vain laittaa
 muita kuin keskikohdan palaa pyörimään keskikohdan ympärillä. Pala voi
@@ -37,7 +37,7 @@ ja tippuu 1:teen, sen jälkeen on S1 ja nousee S9:ään asti.
 Sen jälkeen on mahdollista saada paras arvosana GM eli Grand Master
 jos onnistuu voittamaan pelin tietyssä aikarajassa.
 
-[https://tetris.wiki/Tetris_The_Grand_Master#Scoring](Lisää pistelaskusta)
+[Lisää pistelaskusta](https://tetris.wiki/Tetris_The_Grand_Master#Scoring)
 
 
 **Level ja painovoima**
