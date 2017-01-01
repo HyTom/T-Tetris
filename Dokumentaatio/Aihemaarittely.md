@@ -11,11 +11,11 @@ kääntö systeemi, jossa palat aloittavat aina "väärinpäin".
 Palikalla on aina pala alimmassa mahdollisessa
 kohdassaan, esimerkiksi T:n eri kääntymiset ovat omituisia:
 
-|   1       |   2       |      3    |      4    |
-|:---------:|:---------:|:---------:|:---------:|
-| [_][_][_] | [_][T][_] | [_][_][_] | [_][T][_] |
-| [T][T][T] | [_][T][T] | [_][T][_] | [T][T][_] |
-| [_][T][_] | [_][T][_] | [T][T][T] | [_][T][_] |
+|   1          |   2       |      3    |      4    |
+|:------------:|:----------:|:---------:|:---------:|
+| [..][..][..] | [..][T][..]| [..][..][..] | [..][T][..] |
+| [T][T][T]    | [..][T][T] | [..][T][..] | [T][T][..] |
+| [..][T][..]  | [..][T][..]| [T][T][T] | [..][T][..] |
 
 Koska T menee kolmannessa vaiheessa "istumaan", ei voida vain laittaa
 muita kuin keskikohdan palaa pyörimään keskikohdan ympärillä. Pala voi
@@ -23,12 +23,12 @@ olla aloituskohdastaan vain yhden palan korkeammalla, ja koska voi nousta
 "katon" yläpuolelle, on pelikentän oikea korkeus korkeus + katto.
 Myös I noudattaa näitä sääntöjä:
 
-|    1       |	   2	  |
-|:----------:|:----------:|
-|[_][_][_][_]|[_][_][T][_]|
-|[T][T][T][T]|[_][_][T][_]|
-|[_][_][_][_]|[_][_][T][_]|
-|[_][_][_][_]|[_][_][T][_]|
+|    1           |	   2     |
+|:--------------:|:-------------:|
+|[..][..][..][..]|[..][..][T][..]|
+|[T][T][T][T]    |[..][..][T][..]|
+|[..][..][..][..]|[..][..][T][..]|
+|[..][..][..][..]|[..][..][T][..]|
 
 Paloilla T, J, ja L on neljä eri asentoa, paloilla Z, S, I kaksi ja O ei
 voi kääntyä.
