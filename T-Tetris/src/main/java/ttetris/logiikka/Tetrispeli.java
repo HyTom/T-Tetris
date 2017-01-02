@@ -51,14 +51,18 @@ public class Tetrispeli {
             if (!pelipaattyy) {
                 int luku1 = this.randomoija.annaRandomLukuValilta(2);
                 if (luku1 == 0) {
+                    System.out.println("Myotapaivaan");
                     this.kaivo.tetriminoMyotapaivaan();
                 } else {
+                    System.out.println("Vastapaivaan");
                     this.kaivo.tetriminoVastapaivaan();
                 }
                 int luku2 = this.randomoija.annaRandomLukuValilta(2);
                 if (luku2 == 0) {
+                    System.out.println("Oikealle");
                     this.kaivo.tetriminoOikealle();
                 } else {
+                    System.out.println("Vasemmalle");
                     this.kaivo.tetriminoVasemmalle();
                 }
                 this.kaivo.tulostaKaivo();

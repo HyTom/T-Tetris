@@ -1,6 +1,5 @@
 package ttetris.logiikka;
 
-import ttetris.tetriminot.I;
 import ttetris.tetriminot.Pala;
 import ttetris.tetriminot.Tetrimino;
 

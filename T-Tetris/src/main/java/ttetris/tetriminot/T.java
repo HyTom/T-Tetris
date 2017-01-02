@@ -43,7 +43,6 @@ public class T extends Tetrimino {
 
     @Override
     public void kaannaVastapaivaan() {
-        System.out.println("Kaannetaan");
         int[][] kaantuminen = this.kaantumiset.get(this.asento);
         super.getPalat().get(0).setX(super.getPalat().get(0).getX()
                 + kaantuminen[0][0]);
@@ -61,7 +60,6 @@ public class T extends Tetrimino {
 
     @Override
     public void kaannaMyotapaivaan() {
-        System.out.println("Kaannetaan");
         this.asento--;
         if (this.asento < 0) {
             this.asento = 3;
