@@ -1,12 +1,12 @@
 package ttetris.logiikka;
 
-
 import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 import ttetris.logiikka.Kaivo;
 import ttetris.logiikka.RandomTetrimino;
 import ttetris.logiikka.Tetrispeli;
+import ttetris.tetriminot.Tetrimino;
 
 public class TetrispeliTest {
 
@@ -37,6 +37,13 @@ public class TetrispeliTest {
         assertEquals("[3,1][4,1][5,1][6,1]", peli.getTetrimino().toString());
         peli.getKaivo().tetriminoAlas();
         assertEquals("[3,2][4,2][5,2][6,2]", peli.getTetrimino().toString());
+    }
+
+    @Test
+    public void kaivoSaaPelinAlussaTetriminon() {
+        Tetrimino palikka = peli.getTetrimino();
+        peli.aloita();
+        peli.getKaivo().getTetrimino().equals(palikka);
     }
 
 }

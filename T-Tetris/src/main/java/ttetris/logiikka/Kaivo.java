@@ -58,7 +58,6 @@ public class Kaivo {
         //Tätä voi estää kääntämällä palan enne kuin se tulee alas,
         //jos se on mahdollista
         if (this.tetrimino == null) {
-            System.out.println("Kaivolla ei ole tetriminoa!");
             return false;
         }
         int aloituskohta = this.leveys / 2 - this.tetrimino.aloitusPaikanKeskittaja();
@@ -82,7 +81,6 @@ public class Kaivo {
 
     private void tetriminoPoisRuudukosta() {
         for (Pala pala : this.tetrimino.getPalat()) {
-            System.out.println(pala.getX() + "," + pala.getY());
             if (pala.getY() > 0) {
                 this.ruudukko[pala.getX()][pala.getY()] = null;
             } else {

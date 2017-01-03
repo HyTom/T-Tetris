@@ -1,15 +1,12 @@
 package ttetris.logiikka;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Assert;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import ttetris.tetriminot.I;
 import ttetris.tetriminot.O;
 import ttetris.tetriminot.Pala;
+import ttetris.tetriminot.T;
 
 public class KaivoTest {
 
@@ -118,5 +115,146 @@ public class KaivoTest {
         I i = new I();
         kaivo.setTetrimino(i);
         assertEquals(true, kaivo.uusiTetriminoKaivoon());
+    }
+
+    @Test
+    public void antaaFalseJosEiPalaa() {
+        assertEquals(false, kaivo.uusiTetriminoKaivoon());
+    }
+
+    @Test
+    public void poistaaRuudukostaOikein() {
+        I i = new I();
+        kaivo.setTetrimino(i);
+        kaivo.uusiTetriminoKaivoon();
+        kaivo.tetriminoAlas();
+        assertEquals(kaivo.getRuudukko()[3][1], null);
+        assertEquals(kaivo.getRuudukko()[4][1], null);
+        assertEquals(kaivo.getRuudukko()[5][1], null);
+        assertEquals(kaivo.getRuudukko()[6][1], null);
+    }
+
+    @Test
+    public void eiPoistaKattoa() {
+        I i = new I();
+        kaivo.setTetrimino(i);
+        kaivo.uusiTetriminoKaivoon();
+        kaivo.tetriminoMyotapaivaan();
+        assertEquals(kaivo.getRuudukko()[5][0].toString(), "[I]");
+        kaivo.tetriminoAlas();
+        assertEquals(kaivo.getRuudukko()[5][0].toString(), "   ");
+    }
+
+    @Test
+    public void myotapaivaanKaantaminenToimii() {
+        T t = new T();
+        kaivo.setTetrimino(t);
+        kaivo.uusiTetriminoKaivoon();
+        kaivo.tetriminoMyotapaivaan();
+        assertEquals(kaivo.getRuudukko()[3][1].toString(), "[T]");
+        assertEquals(kaivo.getRuudukko()[4][1].toString(), "[T]");
+        assertEquals(kaivo.getRuudukko()[4][0].toString(), "[T]");
+        assertEquals(kaivo.getRuudukko()[4][2].toString(), "[T]");
+    }
+
+    @Test
+    public void vastapaivaanKaantaminenToimii() {
+        T t = new T();
+        kaivo.setTetrimino(t);
+        kaivo.uusiTetriminoKaivoon();
+        kaivo.tetriminoVastapaivaan();
+        assertEquals(kaivo.getRuudukko()[5][1].toString(), "[T]");
+        assertEquals(kaivo.getRuudukko()[4][1].toString(), "[T]");
+        assertEquals(kaivo.getRuudukko()[4][0].toString(), "[T]");
+        assertEquals(kaivo.getRuudukko()[4][2].toString(), "[T]");
+    }
+
+    @Test
+    public void tetriminoLiikkuuVasemmalle() {
+        O o = new O();
+        kaivo.setTetrimino(o);
+        kaivo.uusiTetriminoKaivoon();
+        kaivo.tetriminoVasemmalle();
+        kaivo.tetriminoVasemmalle();
+        assertEquals(kaivo.getRuudukko()[2][1].toString(), "[O]");
+        assertEquals(kaivo.getRuudukko()[2][2].toString(), "[O]");
+        assertEquals(kaivo.getRuudukko()[3][1].toString(), "[O]");
+        assertEquals(kaivo.getRuudukko()[3][2].toString(), "[O]");
+    }
+
+    @Test
+    public void tetriminoLiikkuuOikealle() {
+        O o = new O();
+        kaivo.setTetrimino(o);
+        kaivo.uusiTetriminoKaivoon();
+        kaivo.tetriminoOikealle();
+        kaivo.tetriminoOikealle();
+        assertEquals(kaivo.getRuudukko()[6][1].toString(), "[O]");
+        assertEquals(kaivo.getRuudukko()[6][2].toString(), "[O]");
+        assertEquals(kaivo.getRuudukko()[7][1].toString(), "[O]");
+        assertEquals(kaivo.getRuudukko()[7][2].toString(), "[O]");
+    }
+
+    @Test
+    public void eisiirraVasemmalleJosEivoi() {
+        O o = new O();
+        kaivo.setTetrimino(o);
+        kaivo.uusiTetriminoKaivoon();
+        kaivo.tetriminoVasemmalle();
+        kaivo.tetriminoVasemmalle();
+        kaivo.tetriminoVasemmalle();
+        T t = new T();
+        kaivo.setTetrimino(t);
+        kaivo.uusiTetriminoKaivoon();
+        assertEquals(kaivo.getRuudukko()[4][2].toString(), "[T]");
+        kaivo.tetriminoVasemmalle();
+        assertEquals(kaivo.getRuudukko()[4][2].toString(), "[T]");
+    }
+
+    @Test
+    public void eisiirraOikealleJosEivoi() {
+        O o = new O();
+        kaivo.setTetrimino(o);
+        kaivo.uusiTetriminoKaivoon();
+        kaivo.tetriminoOikealle();
+        kaivo.tetriminoOikealle();
+        T t = new T();
+        kaivo.setTetrimino(t);
+        kaivo.uusiTetriminoKaivoon();
+        assertEquals(kaivo.getRuudukko()[4][2].toString(), "[T]");
+        kaivo.tetriminoOikealle();
+        assertEquals(kaivo.getRuudukko()[4][2].toString(), "[T]");
+    }
+
+    @Test
+    public void palaTyontaaitsensaSeinastaKaantuessaanVasemmalla() {
+        T t = new T();
+        kaivo.setTetrimino(t);
+        kaivo.uusiTetriminoKaivoon();
+        kaivo.tetriminoVastapaivaan();
+        for (int i = 0; i < 4; i++) {
+            kaivo.tetriminoVasemmalle();
+        }
+        kaivo.tetriminoMyotapaivaan();
+        assertEquals(kaivo.getRuudukko()[0][1].toString(), "[T]");
+        assertEquals(kaivo.getRuudukko()[1][1].toString(), "[T]");
+        assertEquals(kaivo.getRuudukko()[2][1].toString(), "[T]");
+        assertEquals(kaivo.getRuudukko()[1][2].toString(), "[T]");
+    }
+
+    @Test
+    public void palaTyontaaitsensaSeinastaKaantuessaanOikealla() {
+        T t = new T();
+        kaivo.setTetrimino(t);
+        kaivo.uusiTetriminoKaivoon();
+        kaivo.tetriminoMyotapaivaan();
+        for (int i = 0; i < 5; i++) {
+            kaivo.tetriminoOikealle();
+        }
+        kaivo.tetriminoVastapaivaan();
+        assertEquals(kaivo.getRuudukko()[7][1].toString(), "[T]");
+        assertEquals(kaivo.getRuudukko()[8][1].toString(), "[T]");
+        assertEquals(kaivo.getRuudukko()[9][1].toString(), "[T]");
+        assertEquals(kaivo.getRuudukko()[8][2].toString(), "[T]");
     }
 }

@@ -11,5 +11,6 @@ Päivä | Tunnit | Kuvaus
 30.12.2016 | 4h | Logiikan hiomista
 31.12.2016 | 2h | I palikka toimii, deadlineen valmistumista, aikataulun vuoksi testit jäivät vajaiksi tavotteista, testit paremmassa kunnossa ensi deadlineen mennessä.
 1.12.2016  | 4h | Dokumennoinnin nätintämistä ja rankkaa refaktorointia
-2.12.2016  | 2h | J ja L toimii
+2.12.2016  | 3h | Kaikki palat toimivat ja pelin sisäinen logiikka on pääsääntöisesti valmis!
+3.12.2016  | 2h | Luotiin testejä
 ... | ... | ...
