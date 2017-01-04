@@ -13,4 +13,5 @@ Päivä | Tunnit | Kuvaus
 1.12.2016  | 4h | Dokumennoinnin nätintämistä ja rankkaa refaktorointia
 2.12.2016  | 3h | Kaikki palat toimivat ja pelin sisäinen logiikka on pääsääntöisesti valmis!
 3.12.2016  | 2h | Luotiin testejä
+4.12.2016  | 3h | Valmistauduttiin deadlineen (javadoc etc.)
 ... | ... | ...

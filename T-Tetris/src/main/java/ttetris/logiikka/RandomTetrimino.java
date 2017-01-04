@@ -10,6 +10,9 @@ import ttetris.tetriminot.T;
 import ttetris.tetriminot.Tetrimino;
 import ttetris.tetriminot.Z;
 
+/**
+ * Antaa satunnaisesti luotuja Tetrimino olioita.
+ */
 public class RandomTetrimino {
 
     Random random;
@@ -18,28 +21,26 @@ public class RandomTetrimino {
         this.random = new Random();
     }
 
+    /**
+     * Antaa satunnaisesti luodun Tetrimino olion.
+     */
     public Tetrimino annaRandomTetrimino() {
         int luku = this.random.nextInt(7);
-        if (luku == 0) {
-            return annaI();
-        }
-        if (luku == 1) {
-            return annaJ();
-        }
-        if (luku == 2) {
-            return annaL();
-        }
-        if (luku == 3) {
-            return annaS();
-        }
-        if (luku == 4) {
-            return annaZ();
-        }
-        if (luku == 5) {
-            return annaT();
+        switch (luku) {
+            case 0:
+                return annaI();
+            case 1:
+                return annaJ();
+            case 2:
+                return annaL();
+            case 3:
+                return annaS();
+            case 4:
+                return annaZ();
+            case 5:
+                return annaT();
         }
         return annaO();
-
     }
 
     public I annaI() {

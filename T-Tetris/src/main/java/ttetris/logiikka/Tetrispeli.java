@@ -2,6 +2,9 @@ package ttetris.logiikka;
 
 import ttetris.tetriminot.Tetrimino;
 
+/**
+ * Luokka luo ja hallinnoi muita tetrispelissä käytettäviä luokkia.
+ */
 public class Tetrispeli {
 
     private Kaivo kaivo;
@@ -14,10 +17,21 @@ public class Tetrispeli {
         this.tetrimino = this.randomoija.annaRandomTetrimino();
     }
 
+    /**
+     * Palauttaa pelissä käytetyn Kaivo-olion eli pelikentän.
+     *
+     * @return Pelissä käytetyn Kaivo-olion.
+     */
     public Kaivo getKaivo() {
         return kaivo;
     }
 
+    /**
+     * Palauttaa Tetrispelin RandomTetrimino luokan viimeksi luoman
+     * Tetrimino-olion.
+     *
+     * @return Tetrimino-olio.
+     */
     public Tetrimino getTetrimino() {
         return tetrimino;
     }
@@ -30,6 +44,9 @@ public class Tetrispeli {
         return randomoija;
     }
 
+    /**
+     * TÄLLÄ HETKELLÄ Aloittaa pelin looppaamisen.
+     */
     public void aloita() {
         peliAlkaa();
     }
@@ -45,7 +62,6 @@ public class Tetrispeli {
                 level++;
                 System.out.println("LEVEL : " + level);
             }
-
             this.kaivo.tulostaKaivo();
 
             if (!pelipaattyy) {

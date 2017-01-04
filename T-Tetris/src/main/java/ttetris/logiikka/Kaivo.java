@@ -3,6 +3,9 @@ package ttetris.logiikka;
 import ttetris.tetriminot.Pala;
 import ttetris.tetriminot.Tetrimino;
 
+/**
+ * Luo tetrispelissä käytetyn pelikentän ja hallinnoi sen toimintaa.
+ */
 public class Kaivo {
 
     private int leveys;
@@ -10,6 +13,14 @@ public class Kaivo {
     private Pala[][] ruudukko;
     private Tetrimino tetrimino;
 
+    /**
+     * Luo tetrispelissä käytettävän pelialueen parametrien mukaisesti. Oikea
+     * luotu korkeus on annettu korkeus + 1 koska tetrispelissä käytetty katto
+     * luodaan mukana.
+     *
+     * @param leveys pelikentän leveys.
+     * @param korkeus pelikentän korkeus laskematta mukaan kattoa.
+     */
     public Kaivo(int leveys, int korkeus) {
         this.leveys = leveys;
         this.korkeus = korkeus + 1;
@@ -29,6 +40,9 @@ public class Kaivo {
         return ruudukko;
     }
 
+    /**
+     * Tulostaa merkkeinä miltä pelikenttä tällä hetkellä näyttää.
+     */
     public void tulostaKaivo() {
         //käytetään testauksessa
         for (int y = 0; y < this.korkeus; y++) {
@@ -52,11 +66,15 @@ public class Kaivo {
         return tetrimino;
     }
 
+    /**
+     * Palauttaa true jos peli päättyy eli tetrimino osuu toiseen tullessaan
+     * alas. Tätä voi estää kääntämällä palan enne kuin se tulee alas, jos se on
+     * mahdollista
+     *
+     * @return False jos peli päättyy koska Tetrimino osuu toiseen tullessaan
+     * alas tai jos pelillä ei ole Tetrimino oliota.
+     */
     public boolean uusiTetriminoKaivoon() {
-        //Palauttaa true jos peli päättyy eli
-        //tetrimino osuu toiseen tullessaan alas.
-        //Tätä voi estää kääntämällä palan enne kuin se tulee alas,
-        //jos se on mahdollista
         if (this.tetrimino == null) {
             return false;
         }
@@ -92,6 +110,11 @@ public class Kaivo {
         }
     }
 
+    /**
+     * Liikuttaa viimeksi annettua Tetrimino-oliota kaivossa askeleen alas. Jos
+     * ei mahdollista, niin asettaa nykyisen Tetrimino-olion arvoksi null, eli
+     * lukittaa Tetriminon Kaivoon.
+     */
     public void tetriminoAlas() {
         this.tetrimino.alas();
         if (voikoTetriminoOllaTassa()) {
@@ -104,6 +127,10 @@ public class Kaivo {
         }
     }
 
+    /**
+     * Kääntää viimeksi annettua Tetrimino-oliota vastapaivaan jos pelikentällä
+     * mahdollista.
+     */
     public void tetriminoVastapaivaan() {
         this.tetrimino.kaannaVastapaivaan();
         if (voikoTetriminoOllaTassa()) {
@@ -118,6 +145,10 @@ public class Kaivo {
         }
     }
 
+    /**
+     * Kääntää viimeksi annettua Tetrimino-oliota myötäpäivään jos pelikentällä
+     * mahdollista.
+     */
     public void tetriminoMyotapaivaan() {
         this.tetrimino.kaannaMyotapaivaan();
         if (voikoTetriminoOllaTassa()) {
@@ -132,6 +163,10 @@ public class Kaivo {
         }
     }
 
+    /**
+     * Liikuttaa viimeksi luotua Tetrimino-oliota oikealle jos pelikentällä
+     * mahdollista.
+     */
     public void tetriminoOikealle() {
         this.tetrimino.oikealle();
         if (this.voikoTetriminoOllaTassa()) {
@@ -144,6 +179,10 @@ public class Kaivo {
         }
     }
 
+    /**
+     * Liikuttaa viimeksi luotua Tetrimino-oliota oikealle jos pelikentällä
+     * mahdollista.
+     */
     public void tetriminoVasemmalle() {
         this.tetrimino.vasemmalle();
         if (this.voikoTetriminoOllaTassa()) {

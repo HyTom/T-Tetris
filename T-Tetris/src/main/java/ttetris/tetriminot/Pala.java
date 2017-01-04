@@ -1,5 +1,8 @@
 package ttetris.tetriminot;
 
+/**
+ * Olio jolla on atribuutteina x ja y Integer arvot sekä String merkki arvo.
+ */
 public class Pala {
 
     private int x;
@@ -37,7 +40,5 @@ public class Pala {
     public String toString() {
         return merkki;
     }
-    
-    
 
 }
