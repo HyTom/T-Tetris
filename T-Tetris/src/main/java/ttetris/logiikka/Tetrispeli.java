@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
 import ttetris.tetriminot.Tetrimino;
+import ttetris.ui.Nappainkuuntelija;
 import ttetris.ui.Piirtaja;
 
 /**
@@ -14,10 +15,11 @@ public class Tetrispeli implements ActionListener {
     private Kaivo kaivo;
     private RandomTetrimino randomoija;
     private Tetrimino tetrimino;
-    private Timer timer;
     private Piirtaja piirtaja;
     private int level;
     private int tippuuko;
+    private Nappainkuuntelija nappaimet;
+    private Timer timer;
 
     public Tetrispeli() {
         this.kaivo = new Kaivo(10, 20);
@@ -52,6 +54,10 @@ public class Tetrispeli implements ActionListener {
 
     public RandomTetrimino getRandomoija() {
         return randomoija;
+    }
+
+    public void setNappainkuuntelija(Nappainkuuntelija nappaimet) {
+        this.nappaimet = nappaimet;
     }
 
     public void setTimer(Timer timer) {

@@ -13,9 +13,11 @@ public class Kayttoliittyma implements Runnable {
 
     private JFrame frame;
     private PelinAloittaja pelinAloittaja;
+    private Nappainkuuntelija nappaimet;
 
     public Kayttoliittyma(Tetrispeli peli) {
         this.frame = new JFrame("TTetris");
+        peli.setNappainkuuntelija(nappaimet);
         this.pelinAloittaja = new PelinAloittaja(this.frame, peli);
     }
 
