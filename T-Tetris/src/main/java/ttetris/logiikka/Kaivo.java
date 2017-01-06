@@ -28,6 +28,14 @@ public class Kaivo {
         asetaKatto();
     }
 
+    public int getLeveys() {
+        return leveys;
+    }
+
+    public int getKorkeus() {
+        return korkeus;
+    }
+
     private void asetaKatto() {
         for (int x = 0; x < this.leveys; x++) {
             Pala pala = new Pala(x, 0);
@@ -208,7 +216,6 @@ public class Kaivo {
                 }
             }
         }
-        System.out.println("Voi olla tassa");
         return true;
     }
 

@@ -1,5 +1,7 @@
 package ttetris.tetriminot;
 
+import java.awt.Color;
+
 public class Z extends Tetrimino {
 
     int asento;
@@ -17,11 +19,13 @@ public class Z extends Tetrimino {
         for (int i = 0; i < 2; i++) {
             Pala pala = new Pala(i, 0);
             pala.setMerkki("[Z]");
+            pala.setVari(this.getVari());
             super.getPalat().add(pala);
         }
         for (int i = 1; i < 3; i++) {
             Pala pala = new Pala(i, 1);
             pala.setMerkki("[Z]");
+            pala.setVari(this.getVari());
             super.getPalat().add(pala);
         }
     }
@@ -64,6 +68,11 @@ public class Z extends Tetrimino {
         } else {
             kaannaMyotapaivaan();
         }
+    }
+
+    @Override
+    public Color getVari() {
+        return Color.GREEN;
     }
 
 }

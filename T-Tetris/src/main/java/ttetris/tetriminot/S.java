@@ -1,5 +1,7 @@
 package ttetris.tetriminot;
 
+import java.awt.Color;
+
 public class S extends Tetrimino {
 
     int asento;
@@ -17,11 +19,13 @@ public class S extends Tetrimino {
         for (int i = 1; i < 3; i++) {
             Pala pala = new Pala(i, 0);
             pala.setMerkki("[S]");
+            pala.setVari(this.getVari());
             super.getPalat().add(pala);
         }
         for (int i = 0; i < 2; i++) {
             Pala pala = new Pala(i, 1);
             pala.setMerkki("[S]");
+            pala.setVari(this.getVari());
             super.getPalat().add(pala);
         }
     }
@@ -65,4 +69,10 @@ public class S extends Tetrimino {
             kaannaMyotapaivaan();
         }
     }
+
+    @Override
+    public Color getVari() {
+        return Color.PINK;
+    }
+
 }

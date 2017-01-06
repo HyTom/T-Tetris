@@ -1,5 +1,6 @@
 package ttetris.tetriminot;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,10 +21,12 @@ public class T extends Tetrimino {
         for (int i = 0; i < 3; i++) {
             Pala pala = new Pala(i, 0);
             pala.setMerkki("[T]");
+            pala.setVari(this.getVari());
             super.getPalat().add(pala);
         }
         Pala pala = new Pala(1, 1);
         pala.setMerkki("[T]");
+        pala.setVari(this.getVari());
         super.getPalat().add(pala);
     }
 
@@ -73,6 +76,11 @@ public class T extends Tetrimino {
                 - kaantuminen[1][0]);
         super.getPalat().get(2).setY(super.getPalat().get(2).getY()
                 - kaantuminen[1][1]);
+    }
+
+    @Override
+    public Color getVari() {
+        return new Color(66, 244, 235);
     }
 
 }

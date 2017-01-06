@@ -1,5 +1,7 @@
 package ttetris.tetriminot;
 
+import java.awt.Color;
+
 public class O extends Tetrimino {
 
     public O() {
@@ -18,9 +20,17 @@ public class O extends Tetrimino {
             for (int x = 0; x < 2; x++) {
                 Pala pala = new Pala(x, y);
                 pala.setMerkki("[O]");
+                pala.setVari(this.getVari());
                 super.getPalat().add(pala);
             }
         }
     }
+
+    @Override
+    public Color getVari() {
+        return Color.YELLOW;
+    }
+    
+    
 
 }

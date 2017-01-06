@@ -1,13 +1,12 @@
 package ttetris;
 
 import ttetris.logiikka.Tetrispeli;
-import ttetris.tetriminot.I;
+import ttetris.ui.Kayttoliittyma;
 
 public class Main {
 
     public static void main(String[] args) {
-        Tetrispeli peli = new Tetrispeli();
-        peli.aloita();
+        Kayttoliittyma kayttis = new Kayttoliittyma(new Tetrispeli());
+        kayttis.run();
     }
-
 }

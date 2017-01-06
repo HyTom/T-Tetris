@@ -1,5 +1,6 @@
 package ttetris.tetriminot;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -96,5 +97,9 @@ public abstract class Tetrimino {
         for (Pala pala : this.getPalat()) {
             pala.setY(pala.getY() - 1);
         }
+    }
+    
+    public Color getVari() {
+        return Color.WHITE;
     }
 }

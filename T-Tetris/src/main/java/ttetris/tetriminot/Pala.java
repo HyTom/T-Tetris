@@ -1,5 +1,7 @@
 package ttetris.tetriminot;
 
+import java.awt.Color;
+
 /**
  * Olio jolla on atribuutteina x ja y Integer arvot sekä String merkki arvo.
  */
@@ -8,11 +10,13 @@ public class Pala {
     private int x;
     private int y;
     private String merkki;
+    private Color vari;
 
     public Pala(int x, int y) {
         this.x = x;
         this.y = y;
         this.merkki = "[]";
+        this.vari = Color.WHITE;
     }
 
     public int getX() {
@@ -41,4 +45,11 @@ public class Pala {
         return merkki;
     }
 
+    public void setVari(Color vari) {
+        this.vari = vari;
+    }
+
+    public Color getVari() {
+        return this.vari;
+    }
 }
