@@ -1,7 +1,10 @@
 package ttetris.logiikka;
 
+import java.awt.PopupMenu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.Timer;
 import ttetris.tetriminot.Tetrimino;
 import ttetris.ui.Nappainkuuntelija;
@@ -56,8 +59,13 @@ public class Tetrispeli implements ActionListener {
         return randomoija;
     }
 
+    public Nappainkuuntelija getNappainkuuntelija() {
+        return this.nappaimet;
+    }
+
     public void setNappainkuuntelija(Nappainkuuntelija nappaimet) {
         this.nappaimet = nappaimet;
+        nappaimet.setKaivo(this.kaivo);
     }
 
     public void setTimer(Timer timer) {
@@ -117,6 +125,14 @@ public class Tetrispeli implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         boolean pelipaattyy = false;
+        if (this.kaivo.getPitaakoTyhjentaa()) {
+            int montarivia = this.kaivo.tyhjennaTaydetRivit();
+            this.piirtaja.repaint();
+            nukuPuolisekuntia();
+            this.kaivo.tiputaPalojaTyhjennetyilleRiveille();
+            this.piirtaja.repaint();
+            nukuPuolisekuntia();
+        }
         if (this.kaivo.getTetrimino() == null) {
             this.level++;
             this.kaivo.setTetrimino(this.tetrimino);
@@ -124,22 +140,9 @@ public class Tetrispeli implements ActionListener {
             pelipaattyy = this.kaivo.uusiTetriminoKaivoon();
         }
 
-        this.kaivo.tulostaKaivo();
         this.piirtaja.repaint();
 
         if (!pelipaattyy) {
-            int luku1 = this.randomoija.annaRandomLukuValilta(2);
-            if (luku1 == 0) {
-                this.kaivo.tetriminoMyotapaivaan();
-            } else {
-                this.kaivo.tetriminoVastapaivaan();
-            }
-            int luku2 = this.randomoija.annaRandomLukuValilta(2);
-            if (luku2 == 0) {
-                this.kaivo.tetriminoOikealle();
-            } else {
-                this.kaivo.tetriminoVasemmalle();
-            }
             liikkuukoTetriminoAlas();
             this.piirtaja.repaint();
         } else {
@@ -149,7 +152,6 @@ public class Tetrispeli implements ActionListener {
 
     private void liikkuukoTetriminoAlas() {
         tippuuko += annaPainovoima();
-        System.out.println("tippuuko: " + tippuuko);
         if (tippuuko >= 256) {
             tippuuko = 0;
             this.kaivo.tetriminoAlas();
@@ -161,6 +163,14 @@ public class Tetrispeli implements ActionListener {
             return 4;
         } else {
             return 6;
+        }
+    }
+
+    private void nukuPuolisekuntia() {
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Tetrispeli.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

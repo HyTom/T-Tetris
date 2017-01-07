@@ -6,7 +6,8 @@ import ttetris.ui.Kayttoliittyma;
 public class Main {
 
     public static void main(String[] args) {
-        Kayttoliittyma kayttis = new Kayttoliittyma(new Tetrispeli());
+        Tetrispeli peli = new Tetrispeli();
+        Kayttoliittyma kayttis = new Kayttoliittyma(peli);
         kayttis.run();
     }
 }

@@ -24,14 +24,15 @@ public class PelinAloittaja implements ActionListener {
         this.frame.getContentPane().removeAll();
         Piirtaja piirtaja = new Piirtaja();
         this.frame.getContentPane().add(piirtaja);
+        this.frame.addKeyListener(this.peli.getNappainkuuntelija());
+        this.peli.getNappainkuuntelija().setPiirtaja(piirtaja);
         this.frame.setVisible(true);
+        this.frame.requestFocusInWindow();
+        //this.frame.setFocusable(true);
         this.frame.pack();
         this.timer = new Timer(this.ajastus, this.peli);
         this.peli.setTimer(this.timer);
         this.peli.setPiirtaja(piirtaja);
         this.timer.start();
-        if (!this.timer.isRunning()) {
-            System.out.println("LOPPU SATTAYAJKNHILNHNDKHYUKSNGIKSGEUIHMDIO");
-        }
     }
 }

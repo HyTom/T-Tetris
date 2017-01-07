@@ -5,7 +5,6 @@ import java.awt.Dimension;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.Timer;
 import javax.swing.WindowConstants;
 import ttetris.logiikka.Tetrispeli;
 
@@ -17,7 +16,8 @@ public class Kayttoliittyma implements Runnable {
 
     public Kayttoliittyma(Tetrispeli peli) {
         this.frame = new JFrame("TTetris");
-        peli.setNappainkuuntelija(nappaimet);
+        this.nappaimet = new Nappainkuuntelija();
+        peli.setNappainkuuntelija(this.nappaimet);
         this.pelinAloittaja = new PelinAloittaja(this.frame, peli);
     }
 

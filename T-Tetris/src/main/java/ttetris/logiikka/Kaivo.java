@@ -1,5 +1,7 @@
 package ttetris.logiikka;
 
+import java.util.ArrayList;
+import java.util.List;
 import ttetris.tetriminot.Pala;
 import ttetris.tetriminot.Tetrimino;
 
@@ -12,6 +14,8 @@ public class Kaivo {
     private int korkeus;
     private Pala[][] ruudukko;
     private Tetrimino tetrimino;
+    private boolean pitaakotyhjentaa;
+    private List<Integer> tyhjennetytRivit;
 
     /**
      * Luo tetrispelissä käytettävän pelialueen parametrien mukaisesti. Oikea
@@ -26,6 +30,8 @@ public class Kaivo {
         this.korkeus = korkeus + 1;
         ruudukko = new Pala[leveys][this.korkeus];
         asetaKatto();
+        this.pitaakotyhjentaa = false;
+        this.tyhjennetytRivit = new ArrayList();
     }
 
     public int getLeveys() {
@@ -34,6 +40,10 @@ public class Kaivo {
 
     public int getKorkeus() {
         return korkeus;
+    }
+
+    public boolean getPitaakoTyhjentaa() {
+        return this.pitaakotyhjentaa;
     }
 
     private void asetaKatto() {
@@ -121,7 +131,10 @@ public class Kaivo {
     /**
      * Liikuttaa viimeksi annettua Tetrimino-oliota kaivossa askeleen alas. Jos
      * ei mahdollista, niin asettaa nykyisen Tetrimino-olion arvoksi null, eli
-     * lukittaa Tetriminon Kaivoon.
+     * lukittaa Tetriminon Kaivoon. Kysyy myös metodilta tyhjentyykoKaivo() että
+     * onko palan lukituksen jälkeen käynyt niin että jokin kaivon riveistä on
+     * täytetty. Jos niin on, tyhjentaakoKaivo() asettaa boolean atribuutin
+     * pitaatyhjentaa arvoksi true.
      */
     public void tetriminoAlas() {
         this.tetrimino.alas();
@@ -131,8 +144,25 @@ public class Kaivo {
             this.tetrimino.alas();
             this.tetriminoRuudukkoon();
         } else {
+            tyhjentyykoKaivo();
             this.tetrimino = null;
         }
+    }
+
+    private void tyhjentyykoKaivo() {
+        for (int y = 0; y < this.korkeus; y++) {
+            int taytetyt = 0;
+            for (int x = 0; x < this.leveys; x++) {
+                if (this.ruudukko[x][y] != null && !this.ruudukko[x][y].toString().equals("   ")) {
+                    taytetyt++;
+                }
+            }
+            if (taytetyt == this.leveys) {
+                this.pitaakotyhjentaa = true;
+                return;
+            }
+        }
+
     }
 
     /**
@@ -285,6 +315,45 @@ public class Kaivo {
         } else {
             this.tetrimino.kaannaVastapaivaan();
         }
+    }
+
+    public int tyhjennaTaydetRivit() {
+        for (int y = 0; y < this.korkeus; y++) {
+            int taytetty = 0;
+            for (int x = 0; x < this.leveys; x++) {
+                if (this.ruudukko[x][y] != null && !this.ruudukko[x][y].toString().equals("   ")) {
+                    taytetty++;
+                }
+            }
+            if (taytetty == this.leveys) {
+                tyhjennaRivi(y);
+                this.tyhjennetytRivit.add(y);
+                System.out.println(" Y: " + y);
+            }
+        }
+        this.pitaakotyhjentaa = false;
+        return this.tyhjennetytRivit.size();
+    }
+
+    private void tyhjennaRivi(int y) {
+        for (int x = 0; x < this.leveys; x++) {
+            this.ruudukko[x][y] = null;
+        }
+    }
+
+    void tiputaPalojaTyhjennetyilleRiveille() {
+        for (Integer i : this.tyhjennetytRivit) {
+            for (int y = i - 1; y > 0; y--) {
+                for (int x = 0; x < this.leveys; x++) {
+                    if (this.ruudukko[x][y] != null && !this.ruudukko[x][y].toString().equals("   ")) {
+                        Pala pala = this.ruudukko[x][y];
+                        this.ruudukko[x][y + 1] = pala;
+                        this.ruudukko[x][y] = null;
+                    }
+                }
+            }
+        }
+        this.tyhjennetytRivit.clear();
     }
 
 }
