@@ -17,4 +17,5 @@ Päivä | Tunnit | Kuvaus
 5.12.2016  | 3h | Ihme sekoilua
 6.12.2016  | 6h | Käyttöliittymä logiikka toimii jotenkin. Kun painaa aloita nappia, peli alkaa. Pelin piirtologiikka toimii mutta täytyy muuttaa niin että kaivoa on helpompi liikuttaa käyttiksessä helpommin halutulle paikalle. Ainakin kaikille paloille on lisätty oma väri. Lisättiin alkeellinen painovoiman laskeminen joka on sidottu siihen, että peli laskee kaiken 60 kertaa sekunnissa. Tällä hetkellä peliä ei voi pelata, vaan peli satunnaisesti liikuttelee ja pyörittelee palasta, seuraavaksi siihen tulee muutos. Paljon hiottavaa.
 7.12.2016  | 4h | Peli on kankea, mutta pelattavissa.
+8.12.2016  | 5h | Pieniä muutoksia, sekvenssikaavioita, javadocia, testejä, deadlineen valmistumista yms.
 ... | ... | ...

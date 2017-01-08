@@ -25,7 +25,7 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2017</copyright>
     <item>
-      <title>File: 14,
+      <title>File: 17,
              Errors: 1,
              Warnings: 0,
              Infos: 0
@@ -88,6 +88,20 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="${project.url}/checkstyle.html#ttetris.ui.PelinAloittaja.java">ttetris/ui/PelinAloittaja.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="${project.url}/checkstyle.html#ttetris.logiikka.Tetrispeli.java">ttetris/logiikka/Tetrispeli.java</a>
                 </td>
                 <td>
@@ -103,6 +117,20 @@ under the License.
                           <tr>
                 <td>
                   <a href="${project.url}/checkstyle.html#ttetris.tetriminot.J.java">ttetris/tetriminot/J.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#ttetris.ui.Nappainkuuntelija.java">ttetris/ui/Nappainkuuntelija.java</a>
                 </td>
                 <td>
                   0
@@ -173,6 +201,20 @@ under the License.
                           <tr>
                 <td>
                   <a href="${project.url}/checkstyle.html#ttetris.tetriminot.Pala.java">ttetris/tetriminot/Pala.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#ttetris.ui.Piirtaja.java">ttetris/ui/Piirtaja.java</a>
                 </td>
                 <td>
                   0

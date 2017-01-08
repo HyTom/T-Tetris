@@ -131,10 +131,12 @@ public class Tetrispeli implements ActionListener {
         if (this.kaivo.getPitaakoTyhjentaa()) {
             int montarivia = this.kaivo.tyhjennaTaydetRivit();
             this.piirtaja.repaint();
+            this.timer.stop();
             nukuPuolisekuntia();
             this.kaivo.tiputaPalojaTyhjennetyilleRiveille();
             this.piirtaja.repaint();
             nukuPuolisekuntia();
+            this.timer.start();
         }
         if (this.kaivo.getTetrimino() == null) {
             this.level++;
