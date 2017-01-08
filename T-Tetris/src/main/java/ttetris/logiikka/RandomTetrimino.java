@@ -39,8 +39,9 @@ public class RandomTetrimino {
                 return annaZ();
             case 5:
                 return annaT();
+            default:
+                return annaO();
         }
-        return annaO();
     }
 
     public I annaI() {

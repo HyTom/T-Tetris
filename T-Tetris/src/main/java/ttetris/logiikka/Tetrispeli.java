@@ -84,6 +84,9 @@ public class Tetrispeli implements ActionListener {
         peliAlkaa();
     }
 
+    /**
+     * Käytetään testaamisessa jos halutaan katsoa peliä merkkijono esityksenä.
+     */
     private void peliAlkaa() {
         boolean pelipaattyy = false;
         int level = -1;

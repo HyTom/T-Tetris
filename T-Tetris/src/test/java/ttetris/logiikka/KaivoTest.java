@@ -257,4 +257,83 @@ public class KaivoTest {
         assertEquals(kaivo.getRuudukko()[9][1].toString(), "[T]");
         assertEquals(kaivo.getRuudukko()[8][2].toString(), "[T]");
     }
+
+    @Test
+    public void tunnistaaTaydenRivin() {
+        I i1 = new I();
+        I i2 = new I();
+        O o = new O();
+        kaivo.setTetrimino(i1);
+        while (kaivo.getTetrimino() != null) {
+            kaivo.tetriminoVasemmalle();
+            kaivo.tetriminoAlas();
+        }
+        kaivo.setTetrimino(i2);
+        kaivo.uusiTetriminoKaivoon();
+        kaivo.tetriminoOikealle();
+        while (kaivo.getTetrimino() != null) {
+            kaivo.tetriminoAlas();
+        }
+        kaivo.setTetrimino(o);
+        while (kaivo.getTetrimino() != null) {
+            kaivo.tetriminoOikealle();
+            kaivo.tetriminoAlas();
+        }
+        assertEquals(true, kaivo.getPitaakoTyhjentaa());
+    }
+
+    @Test
+    public void osaaPoistaaTaydenRivin() {
+        I i1 = new I();
+        I i2 = new I();
+        O o = new O();
+        kaivo.setTetrimino(i1);
+        while (kaivo.getTetrimino() != null) {
+            kaivo.tetriminoVasemmalle();
+            kaivo.tetriminoAlas();
+        }
+        kaivo.setTetrimino(i2);
+        kaivo.uusiTetriminoKaivoon();
+        kaivo.tetriminoOikealle();
+        while (kaivo.getTetrimino() != null) {
+            kaivo.tetriminoAlas();
+        }
+        kaivo.setTetrimino(o);
+        while (kaivo.getTetrimino() != null) {
+            kaivo.tetriminoOikealle();
+            kaivo.tetriminoAlas();
+        }
+        kaivo.tyhjennaTaydetRivit();
+        kaivo.tulostaKaivo();
+        for (int x = 0; x < kaivo.getLeveys(); x++) {
+            assertEquals(null, kaivo.getRuudukko()[x][20]);
+        }
+    }
+
+    @Test
+    public void osaaTiputtaaPalasiaRivinVerranRivinPoistonJalkeen() {
+        I i1 = new I();
+        I i2 = new I();
+        O o = new O();
+        kaivo.setTetrimino(i1);
+        while (kaivo.getTetrimino() != null) {
+            kaivo.tetriminoVasemmalle();
+            kaivo.tetriminoAlas();
+        }
+        kaivo.setTetrimino(i2);
+        kaivo.uusiTetriminoKaivoon();
+        kaivo.tetriminoOikealle();
+        while (kaivo.getTetrimino() != null) {
+            kaivo.tetriminoAlas();
+        }
+        kaivo.setTetrimino(o);
+        while (kaivo.getTetrimino() != null) {
+            kaivo.tetriminoOikealle();
+            kaivo.tetriminoAlas();
+        }
+        kaivo.tyhjennaTaydetRivit();
+        kaivo.tiputaPalojaTyhjennetyilleRiveille();
+        assertEquals("[O]", kaivo.getRuudukko()[8][20].toString());
+        assertEquals("[O]", kaivo.getRuudukko()[9][20].toString());
+    }
 }

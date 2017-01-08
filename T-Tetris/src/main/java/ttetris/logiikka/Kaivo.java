@@ -122,7 +122,6 @@ public class Kaivo {
             } else {
                 Pala katto = new Pala(pala.getX(), pala.getY());
                 katto.setMerkki("   ");
-                System.out.println(pala.getX() + "," + pala.getY());
                 this.ruudukko[pala.getX()][pala.getY()] = katto;
             }
         }
@@ -317,6 +316,11 @@ public class Kaivo {
         }
     }
 
+    /**
+     * Tyhjentaa taydet rivit, mutta ei tiputa palasia.
+     *
+     * @return Monta rivia tyhjennettiin.
+     */
     public int tyhjennaTaydetRivit() {
         for (int y = 0; y < this.korkeus; y++) {
             int taytetty = 0;
@@ -340,7 +344,10 @@ public class Kaivo {
         }
     }
 
-    void tiputaPalojaTyhjennetyilleRiveille() {
+    /**
+     *Tiputtaa paloja jotka ovat tyhjennettyjen rivien yläpuolella.
+     */
+    public void tiputaPalojaTyhjennetyilleRiveille() {
         for (Integer i : this.tyhjennetytRivit) {
             for (int y = i - 1; y > 0; y--) {
                 for (int x = 0; x < this.leveys; x++) {
