@@ -64,3 +64,12 @@ Kuvassa on laitettu abstrakti luokka Tetrimino ja sen perilliset eli kaikki
 eri tetrispalikat laatikkoon jotta ei tarvitsisi tehdä miljoonaa viivaa.
 Tetriminon perilliset perivät Tetriminolta listan Paloista, en ole varma
 täytyisikö silloinkin perillisistäkin piirtää viiva Palaan.
+
+Sekvenssikaavioita:
+
+Käskettävän tetriminon vaihtaminen kaivossa.
+![Alt text](SekvenssikaavioTetriminonVaihtaminen.jpg)
+
+Kaivon tyhjentäminen kun jokin rivi(t) on täynnä.
+![Alt text](SekvenssikaavioRivinPoisto.jpg)
+

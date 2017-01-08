@@ -328,7 +328,6 @@ public class Kaivo {
             if (taytetty == this.leveys) {
                 tyhjennaRivi(y);
                 this.tyhjennetytRivit.add(y);
-                System.out.println(" Y: " + y);
             }
         }
         this.pitaakotyhjentaa = false;
