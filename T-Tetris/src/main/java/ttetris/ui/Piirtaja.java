@@ -12,7 +12,7 @@ public class Piirtaja extends JPanel {
     private int koko;
 
     public Piirtaja() {
-        super.setBackground(Color.WHITE);
+        super.setBackground(Color.BLACK);
         this.koko = 20;
     }
 
@@ -27,15 +27,15 @@ public class Piirtaja extends JPanel {
     }
 
     private void piirraSeinat(Graphics g) {
-        g.setColor(Color.DARK_GRAY);
+        g.setColor(new Color(192, 202, 206));
         //Katto
-        g.fillRect(0, 0, (kaivo.getLeveys() + 2) * koko, koko);
+        g.fill3DRect(0, 0, (kaivo.getLeveys() + 2) * koko, koko, true);
         //vasen seinä
-        g.fillRect(0, 0, koko, (kaivo.getKorkeus() + 1) * koko);
+        g.fill3DRect(0, 0, koko, (kaivo.getKorkeus() + 1) * koko, true);
         //oikea seinä
-        g.fillRect((kaivo.getLeveys() + 1) * koko, 0, koko, (kaivo.getKorkeus() + 1) * koko);
+        g.fill3DRect((kaivo.getLeveys() + 1) * koko, 0, koko, (kaivo.getKorkeus() + 1) * koko, true);
         //lattia
-        g.fillRect(0, kaivo.getKorkeus() * koko, (kaivo.getLeveys() + 2) * koko, koko);
+        g.fill3DRect(0, kaivo.getKorkeus() * koko, (kaivo.getLeveys() + 2) * koko, koko, true);
     }
 
     private void piirraKaivo(Graphics g) {

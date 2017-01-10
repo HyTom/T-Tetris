@@ -23,29 +23,31 @@ public class Nappainkuuntelija implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_A) {
-            this.kaivo.tetriminoVasemmalle();
-            this.piirtaja.repaint();
-        }
-        if (e.getKeyCode() == KeyEvent.VK_D) {
-            this.kaivo.tetriminoOikealle();
-            this.piirtaja.repaint();
-        }
-        if (e.getKeyCode() == KeyEvent.VK_S) {
-            this.kaivo.tetriminoAlas();
-            this.piirtaja.repaint();
-        }
-        if (e.getKeyCode() == KeyEvent.VK_M) {
-            this.kaivo.tetriminoMyotapaivaan();
-            this.piirtaja.repaint();
-        }
-        if (e.getKeyCode() == KeyEvent.VK_COMMA) {
-            this.kaivo.tetriminoVastapaivaan();
-            this.piirtaja.repaint();
-        }
-        if (e.getKeyCode() == KeyEvent.VK_PERIOD) {
-            this.kaivo.tetriminoMyotapaivaan();
-            this.piirtaja.repaint();
+        if (this.kaivo.getTetrimino() != null) {
+            if (e.getKeyCode() == KeyEvent.VK_A) {
+                this.kaivo.tetriminoVasemmalle();
+                this.piirtaja.repaint();
+            }
+            if (e.getKeyCode() == KeyEvent.VK_D) {
+                this.kaivo.tetriminoOikealle();
+                this.piirtaja.repaint();
+            }
+            if (e.getKeyCode() == KeyEvent.VK_S) {
+                this.kaivo.tetriminoAlas();
+                this.piirtaja.repaint();
+            }
+            if (e.getKeyCode() == KeyEvent.VK_M) {
+                this.kaivo.tetriminoMyotapaivaan();
+                this.piirtaja.repaint();
+            }
+            if (e.getKeyCode() == KeyEvent.VK_COMMA) {
+                this.kaivo.tetriminoVastapaivaan();
+                this.piirtaja.repaint();
+            }
+            if (e.getKeyCode() == KeyEvent.VK_PERIOD) {
+                this.kaivo.tetriminoMyotapaivaan();
+                this.piirtaja.repaint();
+            }
         }
     }
 
