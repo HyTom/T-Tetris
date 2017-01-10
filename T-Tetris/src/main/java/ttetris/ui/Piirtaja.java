@@ -44,8 +44,9 @@ public class Piirtaja extends JPanel {
                 Pala pala = this.kaivo.getRuudukko()[x][y];
                 if (pala != null) {
                     g.setColor(pala.getVari());
-                    g.fillRect((x + 1) * koko,
-                            y * koko, koko, koko);
+                    g.fill3DRect((x + 1) * koko,
+                            y * koko, koko, koko, true);
+                    
                 }
             }
         }

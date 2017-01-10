@@ -18,4 +18,5 @@ Päivä | Tunnit | Kuvaus
 6.12.2016  | 6h | Käyttöliittymä logiikka toimii jotenkin. Kun painaa aloita nappia, peli alkaa. Pelin piirtologiikka toimii mutta täytyy muuttaa niin että kaivoa on helpompi liikuttaa käyttiksessä helpommin halutulle paikalle. Ainakin kaikille paloille on lisätty oma väri. Lisättiin alkeellinen painovoiman laskeminen joka on sidottu siihen, että peli laskee kaiken 60 kertaa sekunnissa. Tällä hetkellä peliä ei voi pelata, vaan peli satunnaisesti liikuttelee ja pyörittelee palasta, seuraavaksi siihen tulee muutos. Paljon hiottavaa.
 7.12.2016  | 4h | Peli on kankea, mutta pelattavissa.
 8.12.2016  | 5h | Pieniä muutoksia, sekvenssikaavioita, javadocia, testejä, deadlineen valmistumista yms.
+10.12.2016 | 10 min | Peli paukutti null pointtereita jos painoi alaspäin kun palaa ei voinut liikuttaa koska pelillä ei ollut palaa mitä liikuttaa. Se ei tee sitä enään. Kun muutti Piirtaja luokan kohdassa jossa pelin paloja piirrettiin metodin fillRect() metodiksi fill3DRect() niin peli muuttui taianomaisesti 100 kertaa tyylikkäämmän näköiseksi.
 ... | ... | ...

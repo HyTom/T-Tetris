@@ -136,15 +136,17 @@ public class Kaivo {
      * pitaatyhjentaa arvoksi true.
      */
     public void tetriminoAlas() {
-        this.tetrimino.alas();
-        if (voikoTetriminoOllaTassa()) {
-            this.tetrimino.ylos();
-            tetriminoPoisRuudukosta();
+        if (this.tetrimino != null) {
             this.tetrimino.alas();
-            this.tetriminoRuudukkoon();
-        } else {
-            tyhjentyykoKaivo();
-            this.tetrimino = null;
+            if (voikoTetriminoOllaTassa()) {
+                this.tetrimino.ylos();
+                tetriminoPoisRuudukosta();
+                this.tetrimino.alas();
+                this.tetriminoRuudukkoon();
+            } else {
+                tyhjentyykoKaivo();
+                this.tetrimino = null;
+            }
         }
     }
 
@@ -345,7 +347,7 @@ public class Kaivo {
     }
 
     /**
-     *Tiputtaa paloja jotka ovat tyhjennettyjen rivien yläpuolella.
+     * Tiputtaa paloja jotka ovat tyhjennettyjen rivien yläpuolella.
      */
     public void tiputaPalojaTyhjennetyilleRiveille() {
         for (Integer i : this.tyhjennetytRivit) {
