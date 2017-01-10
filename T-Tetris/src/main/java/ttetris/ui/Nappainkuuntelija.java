@@ -8,13 +8,19 @@ public class Nappainkuuntelija implements KeyListener {
 
     private Kaivo kaivo;
     private Piirtaja piirtaja;
+    private boolean pelipaattyy;
 
     public void setKaivo(Kaivo kaivo) {
         this.kaivo = kaivo;
+        this.pelipaattyy = false;
     }
 
     public void setPiirtaja(Piirtaja piirtaja) {
         this.piirtaja = piirtaja;
+    }
+
+    public void setPelipaattyy(boolean pelipaattyy) {
+        this.pelipaattyy = pelipaattyy;
     }
 
     @Override
@@ -23,7 +29,7 @@ public class Nappainkuuntelija implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        if (this.kaivo.getTetrimino() != null) {
+        if (this.kaivo.getTetrimino() != null && !this.pelipaattyy) {
             if (e.getKeyCode() == KeyEvent.VK_A) {
                 this.kaivo.tetriminoVasemmalle();
                 this.piirtaja.repaint();

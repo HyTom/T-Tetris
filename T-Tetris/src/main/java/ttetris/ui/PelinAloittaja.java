@@ -13,6 +13,8 @@ public class PelinAloittaja implements ActionListener {
     private Timer timer;
     private int ajastus;
     private Tetrispeli peli;
+    private int ikkunankokox;
+    private int ikkunankokoy;
 
     PelinAloittaja(JFrame frame, Tetrispeli peli) {
         this.frame = frame;
@@ -34,6 +36,12 @@ public class PelinAloittaja implements ActionListener {
         this.timer = new Timer(this.ajastus, this.peli);
         this.peli.setTimer(this.timer);
         this.peli.setPiirtaja(piirtaja);
+        piirtaja.annaIkkunanKoko(this.ikkunankokox, this.ikkunankokoy);
         this.timer.start();
+    }
+
+    void annaIkkunanKoko(int x, int y) {
+        this.ikkunankokox = x;
+        this.ikkunankokoy = y;
     }
 }

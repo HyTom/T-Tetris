@@ -23,7 +23,8 @@ public class Kayttoliittyma implements Runnable {
 
     @Override
     public void run() {
-        this.frame.setPreferredSize(new Dimension(700, 500));
+        this.frame.setPreferredSize(new Dimension(800, 600));
+        this.pelinAloittaja.annaIkkunanKoko(800, 600);
         this.frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         luoKomponentit(this.frame.getContentPane());

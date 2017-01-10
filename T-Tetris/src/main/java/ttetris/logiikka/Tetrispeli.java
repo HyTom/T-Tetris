@@ -75,6 +75,8 @@ public class Tetrispeli implements ActionListener {
     public void setPiirtaja(Piirtaja piirtaja) {
         this.piirtaja = piirtaja;
         this.piirtaja.setKaivo(this.kaivo);
+        this.piirtaja.setTetrimino(this.tetrimino);
+        annaPiirtajalleLevel();
     }
 
     /**
@@ -129,20 +131,10 @@ public class Tetrispeli implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         boolean pelipaattyy = false;
         if (this.kaivo.getPitaakoTyhjentaa()) {
-            int montarivia = this.kaivo.tyhjennaTaydetRivit();
-            this.piirtaja.repaint();
-            this.timer.stop();
-            nukuPuolisekuntia();
-            this.kaivo.tiputaPalojaTyhjennetyilleRiveille();
-            this.piirtaja.repaint();
-            nukuPuolisekuntia();
-            this.timer.start();
+            kaivoaPitaaTyhjentaa();
         }
         if (this.kaivo.getTetrimino() == null) {
-            this.level++;
-            this.kaivo.setTetrimino(this.tetrimino);
-            this.tetrimino = this.randomoija.annaRandomTetrimino();
-            pelipaattyy = this.kaivo.uusiTetriminoKaivoon();
+            pelipaattyy = generoiUusiTetrimino();
         }
 
         this.piirtaja.repaint();
@@ -151,9 +143,33 @@ public class Tetrispeli implements ActionListener {
             liikkuukoTetriminoAlas();
             this.piirtaja.repaint();
         } else {
+            this.nappaimet.setPelipaattyy(true);
             this.timer.stop();
         }
     }
+    
+        private void kaivoaPitaaTyhjentaa() {
+        int montarivia = this.kaivo.tyhjennaTaydetRivit();
+            if (montarivia > 1) {
+                this.level = this.level + montarivia;
+            }
+            this.piirtaja.repaint();
+            this.timer.stop();
+            nukuPuolisekuntia();
+            this.kaivo.tiputaPalojaTyhjennetyilleRiveille();
+            this.piirtaja.repaint();
+            nukuPuolisekuntia();
+            this.timer.start();
+    }
+        
+        private boolean generoiUusiTetrimino() {
+            this.level++;
+            annaPiirtajalleLevel();
+            this.kaivo.setTetrimino(this.tetrimino);
+            this.tetrimino = this.randomoija.annaRandomTetrimino();
+            this.piirtaja.setTetrimino(this.tetrimino);
+            return this.kaivo.uusiTetriminoKaivoon();
+        }
 
     private void liikkuukoTetriminoAlas() {
         tippuuko += annaPainovoima();
@@ -177,5 +193,9 @@ public class Tetrispeli implements ActionListener {
         } catch (InterruptedException ex) {
             Logger.getLogger(Tetrispeli.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    private void annaPiirtajalleLevel() {
+        this.piirtaja.setLevel(this.level);
     }
 }
