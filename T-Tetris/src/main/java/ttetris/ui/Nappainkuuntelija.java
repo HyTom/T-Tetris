@@ -2,6 +2,8 @@ package ttetris.ui;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
+import java.util.List;
 import ttetris.logiikka.Kaivo;
 
 public class Nappainkuuntelija implements KeyListener {
@@ -9,6 +11,17 @@ public class Nappainkuuntelija implements KeyListener {
     private Kaivo kaivo;
     private Piirtaja piirtaja;
     private boolean pelipaattyy;
+    private boolean voikoOhjata;
+    private List<Nappaimet> komennot;
+
+    public Nappainkuuntelija() {
+        this.voikoOhjata = true;
+        this.komennot = new ArrayList();
+    }
+
+    public void setVoikoOhjata(boolean voikoOhjata) {
+        this.voikoOhjata = voikoOhjata;
+    }
 
     public void setKaivo(Kaivo kaivo) {
         this.kaivo = kaivo;
@@ -29,29 +42,29 @@ public class Nappainkuuntelija implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        if (this.kaivo.getTetrimino() != null && !this.pelipaattyy) {
-            if (e.getKeyCode() == KeyEvent.VK_A) {
+        if (this.voikoOhjata & this.kaivo.getTetrimino() != null & !this.pelipaattyy) {
+            if (e.getKeyCode() == KeyEvent.VK_A | e.getKeyCode() == KeyEvent.VK_LEFT) {
                 this.kaivo.tetriminoVasemmalle();
                 this.piirtaja.repaint();
             }
-            if (e.getKeyCode() == KeyEvent.VK_D) {
+            if (e.getKeyCode() == KeyEvent.VK_D | e.getKeyCode() == KeyEvent.VK_RIGHT) {
                 this.kaivo.tetriminoOikealle();
                 this.piirtaja.repaint();
             }
-            if (e.getKeyCode() == KeyEvent.VK_S) {
+            if (e.getKeyCode() == KeyEvent.VK_S | e.getKeyCode() == KeyEvent.VK_DOWN) {
                 this.kaivo.tetriminoAlas();
                 this.piirtaja.repaint();
             }
-            if (e.getKeyCode() == KeyEvent.VK_M) {
-                this.kaivo.tetriminoMyotapaivaan();
-                this.piirtaja.repaint();
-            }
-            if (e.getKeyCode() == KeyEvent.VK_COMMA) {
+            if (e.getKeyCode() == KeyEvent.VK_M | e.getKeyCode() == KeyEvent.VK_Z) {
                 this.kaivo.tetriminoVastapaivaan();
                 this.piirtaja.repaint();
             }
-            if (e.getKeyCode() == KeyEvent.VK_PERIOD) {
+            if (e.getKeyCode() == KeyEvent.VK_COMMA | e.getKeyCode() == KeyEvent.VK_X) {
                 this.kaivo.tetriminoMyotapaivaan();
+                this.piirtaja.repaint();
+            }
+            if (e.getKeyCode() == KeyEvent.VK_PERIOD | e.getKeyCode() == KeyEvent.VK_C) {
+                this.kaivo.tetriminoVastapaivaan();
                 this.piirtaja.repaint();
             }
         }

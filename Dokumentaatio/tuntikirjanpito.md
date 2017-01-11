@@ -19,4 +19,5 @@ Päivä | Tunnit | Kuvaus
 7.12.2016  | 4h | Peli on kankea, mutta pelattavissa.
 8.12.2016  | 5h | Pieniä muutoksia, sekvenssikaavioita, javadocia, testejä, deadlineen valmistumista yms.
 10.12.2016 | 3h | Peli paukutti null pointtereita jos painoi suuntanäppäintä kun palaa ei voinut liikuttaa koska pelillä ei ollut palaa mitä liikuttaa. Se ei tee sitä enään. Kun muutti Piirtaja luokan kohdassa jossa pelin paloja ja seiniä piirrettiin metodin fillRect() metodiksi fill3DRect() niin peli muuttui taianomaisesti 100 kertaa tyylikkäämmän näköiseksi. Peli näyttää nyt levelin ja ulkonäköä muutettiin. Korjattiin bugeja. Peli näyttää seuraavan palan.
+11.12.2016 | 8h | Sotkenut koodia ja lisännyt pieniä muutoksia. Pelissä on nyt palanlukitus systeemi.
 ... | ... | ...

@@ -17,10 +17,14 @@ public class Piirtaja extends JPanel {
     private int kaivonsijaintiy;
     private int level;
     private Tetrimino tetrimino;
+    private int lukitus;
+    private int pisteet;
 
     public Piirtaja() {
         super.setBackground(Color.BLACK);
         this.koko = 20;
+        this.lukitus = 31;
+        this.pisteet = 0;
     }
 
     public void setKaivo(Kaivo kaivo) {
@@ -32,7 +36,8 @@ public class Piirtaja extends JPanel {
         piirraSeinat(g);
         piirraKaivo(g);
         piirraSeuraavaPala(g);
-        piirraLevel(g);
+        PiirraLevelJaPisteet(g);
+        piirraLukitus(g);
     }
 
     private void piirraSeinat(Graphics g) {
@@ -90,12 +95,31 @@ public class Piirtaja extends JPanel {
         this.tetrimino = tetrimino;
     }
 
-    private void piirraLevel(Graphics g) {
+    private void PiirraLevelJaPisteet(Graphics g) {
         g.setColor(Color.WHITE);
         g.drawString("LEVEL :" + level, koko, koko);
+        g.drawString("POINTS :" + this.pisteet, koko, koko * 2);
     }
 
     public void setLevel(int level) {
         this.level = level;
+    }
+
+    public void setLukitus(int lukitus) {
+        this.lukitus = lukitus;
+    }
+
+    private void piirraLukitus(Graphics g) {
+        if (this.lukitus < 31) {
+            g.drawLine(this.kaivonsijaintix,
+                    this.kaivonsijaintiy + (this.kaivo.getKorkeus() + 2) * koko,
+                    this.kaivonsijaintix + (this.kaivo.getLeveys() + 2) * koko
+                    / 30 * this.lukitus,
+                    this.kaivonsijaintiy + (this.kaivo.getKorkeus() + 2) * koko);
+        }
+    }
+
+    public void setPisteet(int pisteet) {
+        this.pisteet = pisteet;
     }
 }

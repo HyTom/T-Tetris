@@ -16,6 +16,7 @@ public class Kaivo {
     private Tetrimino tetrimino;
     private boolean pitaakotyhjentaa;
     private List<Integer> tyhjennetytRivit;
+    private boolean lukittuu;
 
     /**
      * Luo tetrispelissä käytettävän pelialueen parametrien mukaisesti. Oikea
@@ -32,6 +33,7 @@ public class Kaivo {
         asetaKatto();
         this.pitaakotyhjentaa = false;
         this.tyhjennetytRivit = new ArrayList();
+        this.lukittuu = false;
     }
 
     public int getLeveys() {
@@ -56,6 +58,16 @@ public class Kaivo {
 
     public Pala[][] getRuudukko() {
         return ruudukko;
+    }
+
+    public boolean lukittuuko() {
+        this.tetrimino.alas();
+        if (!this.voikoTetriminoOllaTassa()) {
+            this.tetrimino.ylos();
+            return true;
+        }
+        this.tetrimino.ylos();
+        return false;
     }
 
     /**
