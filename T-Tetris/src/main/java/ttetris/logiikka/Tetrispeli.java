@@ -29,6 +29,7 @@ public class Tetrispeli implements ActionListener {
     private boolean peliOdottaaTyhjennysta;
     private Map<Integer, Integer> painovoimat;
     private int pisteet;
+    private boolean pelipaattyy;
 
     public Tetrispeli() {
         this.kaivo = new Kaivo(10, 20);
@@ -41,6 +42,7 @@ public class Tetrispeli implements ActionListener {
         this.ruudunTyhjennys = 60;
         this.luoPainovoimat();
         this.pisteet = 0;
+        this.pelipaattyy = false;
     }
 
     /**
@@ -153,8 +155,7 @@ public class Tetrispeli implements ActionListener {
                 liikkuukoTetriminoAlas();
                 this.piirtaja.repaint();
             } else {
-                this.nappainkuuntelija.setPelipaattyy(true);
-                this.timer.stop();
+                lopetaPeli();
             }
         } else {
             kaivoaPitaaTyhjentaa();
@@ -190,8 +191,8 @@ public class Tetrispeli implements ActionListener {
     }
 
     private void liikkuukoTetriminoAlas() {
-        tippuuko += annaPainovoima();
         if (this.lukitus == 31) {
+            tippuuko = tippuuko + annaPainovoima();
             if (tippuuko >= 256) {
                 tippuuko = 0;
                 if (!this.kaivo.lukittuuko()) {
@@ -214,13 +215,16 @@ public class Tetrispeli implements ActionListener {
     }
 
     private int annaPainovoima() {
-        int leveli = 4;
-        for (Integer integer : this.painovoimat.keySet()) {
-            if (this.level >= integer) {
-                leveli = this.painovoimat.get(integer);
+        int palautettava = 0;
+        int avain = 0;
+        for (Integer key : this.painovoimat.keySet()) {
+            if (this.level >= key & avain <= key) {
+                avain = key;
+                palautettava = this.painovoimat.get(key);
             }
         }
-        return leveli;
+        System.out.println(palautettava);
+        return palautettava;
     }
 
     private void annaPiirtajalleLevelJaPisteet() {
@@ -261,5 +265,20 @@ public class Tetrispeli implements ActionListener {
         painovoimat.put(450, 768);
         painovoimat.put(500, 5120);
 
+    }
+
+    private void lopetaPeli() {
+        this.nappainkuuntelija.setPelipaattyy(true);
+        this.piirtaja.repaint();
+        this.timer.stop();
+        setPeliPaattyy(true);
+    }
+
+    private void setPeliPaattyy(boolean paattyyko) {
+        this.pelipaattyy = paattyyko;
+    }
+
+    public boolean paattyikoPeli() {
+        return pelipaattyy;
     }
 }

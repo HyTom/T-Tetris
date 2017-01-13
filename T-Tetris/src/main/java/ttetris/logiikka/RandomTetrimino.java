@@ -25,6 +25,7 @@ public class RandomTetrimino {
      * Antaa satunnaisesti luodun Tetrimino olion.
      */
     public Tetrimino annaRandomTetrimino() {
+        //Pelin ei ole tarkoitus antaa paloja täysin randomisti, niinkuin nyt.
         int luku = this.random.nextInt(7);
         switch (luku) {
             case 0:
