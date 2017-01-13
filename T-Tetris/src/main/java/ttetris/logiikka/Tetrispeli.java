@@ -223,7 +223,6 @@ public class Tetrispeli implements ActionListener {
                 palautettava = this.painovoimat.get(key);
             }
         }
-        System.out.println(palautettava);
         return palautettava;
     }
 
