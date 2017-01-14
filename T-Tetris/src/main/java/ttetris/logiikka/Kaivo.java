@@ -59,7 +59,10 @@ public class Kaivo {
     public Pala[][] getRuudukko() {
         return ruudukko;
     }
-
+/**
+ * Palauttaa että voiko pala liikkua alemmaksi.
+ * @return Aloittaako lukkiutumisen.
+ */
     public boolean lukittuuko() {
         this.tetrimino.alas();
         if (!this.voikoTetriminoOllaTassa()) {

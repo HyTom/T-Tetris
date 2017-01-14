@@ -30,6 +30,7 @@ public class PelinAloittaja implements ActionListener {
         this.frame.addKeyListener(this.peli.getNappainkuuntelija());
         this.peli.getNappainkuuntelija().setPiirtaja(piirtaja);
         this.frame.setVisible(true);
+        this.peli.getNappainkuuntelija().setTetrispeli(this.peli);
         this.frame.requestFocusInWindow();
         //this.frame.setFocusable(true);
         this.frame.pack();

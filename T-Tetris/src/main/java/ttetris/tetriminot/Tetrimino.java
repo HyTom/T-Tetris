@@ -102,4 +102,8 @@ public abstract class Tetrimino {
     public Color getVari() {
         return Color.WHITE;
     }
+    
+    public Color getVariValkoinen() {
+        return Color.WHITE;
+    }
 }

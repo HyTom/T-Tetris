@@ -85,5 +85,11 @@ public class Pelilaskuri {
     public void setOnkoaktiivinen(boolean onkoaktiivinen) {
         this.onkoaktiivinen = onkoaktiivinen;
     }
+
+    public int getAloitusaika() {
+        return aloitusaika;
+    }
+    
+    
     
 }

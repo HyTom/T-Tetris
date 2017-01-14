@@ -76,6 +76,18 @@ public class Tetrispeli implements ActionListener {
         return this.nappainkuuntelija;
     }
 
+    public Pelilaskuri getLukitusmittari() {
+        return lukitusmittari;
+    }
+
+    public Pelilaskuri getLukitusaika() {
+        return lukitusaika;
+    }
+
+    public Pelilaskuri getTippuukoTetrimino() {
+        return tippuukoTetrimino;
+    }
+
     public void setNappainkuuntelija(Nappainkuuntelija nappaimet) {
         this.nappainkuuntelija = nappaimet;
         nappaimet.setTetrispeliintarvittavat(this.kaivo, this.lukitusmittari);
@@ -90,7 +102,7 @@ public class Tetrispeli implements ActionListener {
         this.piirtaja.setKaivo(this.kaivo);
         this.piirtaja.setTetrimino(this.tetrimino);
         this.piirtaja.setLevelLaskuri(this.level);
-        this.piirtaja.setLukitusaika(this.lukitusmittari);
+        this.piirtaja.setLukitusmittari(this.lukitusmittari);
         annaPiirtajalleLevelJaPisteet();
     }
 
@@ -144,24 +156,28 @@ public class Tetrispeli implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (this.kaivo.getPitaakoTyhjentaa()) {
-            this.ruudunTyhjennys.setOnkoaktiivinen(true);
-        }
-        if (this.ruudunTyhjennys.getOnkoaktiivinen()) {
-            kaivoaPitaaTyhjentaa();
+        if (this.lukitusaika.getOnkoaktiivinen()) {
+            suoritaLukitusAika();
         } else {
-            if (this.kaivo.getTetrimino() == null) {
-                //tässä lukitus tauko
-                pelipaattyy = generoiUusiTetrimino();
+            if (this.kaivo.getPitaakoTyhjentaa()) {
+                this.ruudunTyhjennys.setOnkoaktiivinen(true);
             }
-            this.piirtaja.repaint();
-            if (!this.pelipaattyy) {
-                liikkuukoTetriminoAlas();
-                this.piirtaja.repaint();
+            if (this.ruudunTyhjennys.getOnkoaktiivinen()) {
+                kaivoaPitaaTyhjentaa();
             } else {
-                lopetaPeli();
+                if (this.kaivo.getTetrimino() == null) {
+                    pelipaattyy = generoiUusiTetrimino();
+                }
+                this.piirtaja.repaint();
+                if (!this.pelipaattyy) {
+                    liikkuukoTetriminoAlas();
+                    this.piirtaja.repaint();
+                } else {
+                    lopetaPeli();
+                }
             }
         }
+
     }
 
     private void kaivoaPitaaTyhjentaa() {
@@ -213,9 +229,31 @@ public class Tetrispeli implements ActionListener {
         }
         if (this.lukitusmittari.onkoAikaKulunutLoppuun()) {
             tippuukoTetrimino.aikaAlkuTilaan(false);
-            this.kaivo.tetriminoAlas();
             this.lukitusmittari.aikaAlkuTilaan(false);
             this.lukitusmittari.setOnkoaktiivinen(false);
+            aloitaLukitusAika();
+        }
+    }
+
+    public void aloitaLukitusAika() {
+        this.nappainkuuntelija.setVoikoOhjata(false);
+        this.lukitusmittari.aikaAlkuTilaan(false);
+        this.lukitusaika.setOnkoaktiivinen(true);
+    }
+
+    public void suoritaLukitusAika() {
+        this.piirtaja.repaint();
+        this.lukitusaika.vahennaAikaaYhdellä();
+        if (this.lukitusaika.getAika() > 10) {
+            this.piirtaja.setLukitusPiirretaan(true);
+        } else {
+            this.piirtaja.setLukitusPiirretaan(false);
+        }
+        if (this.lukitusaika.onkoAikaKulunutLoppuun()) {
+            this.lukitusaika.aikaAlkuTilaan(false);
+            this.lukitusaika.setOnkoaktiivinen(false);
+            this.nappainkuuntelija.setVoikoOhjata(true);
+            this.kaivo.tetriminoAlas();
         }
     }
 

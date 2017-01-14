@@ -21,11 +21,13 @@ public class Piirtaja extends JPanel {
     private Pelilaskuri lukitusmittari;
     private int pisteet;
     private Levellaskuri level;
+    private boolean lukitus;
 
     public Piirtaja() {
         super.setBackground(Color.BLACK);
         this.koko = 20;
         this.pisteet = 0;
+        this.lukitus = false;
     }
 
     public void setKaivo(Kaivo kaivo) {
@@ -39,6 +41,9 @@ public class Piirtaja extends JPanel {
         piirraSeuraavaPala(g);
         PiirraLevelJaPisteet(g);
         piirraLukitusmittari(g);
+        if (this.lukitus) {
+            piirraLukkiutuminen(g);
+        }
     }
 
     private void piirraSeinat(Graphics g) {
@@ -86,7 +91,6 @@ public class Piirtaja extends JPanel {
         for (Pala pala : this.tetrimino.getPalat()) {
             g.fill3DRect(this.kaivonsijaintix + koko * (this.kaivo.getLeveys() + 2) / 2
                     + pala.getX() * koko - this.tetrimino.aloitusPaikanKeskittaja() * koko,
-                    //this.leveys / 2 - this.tetrimino.aloitusPaikanKeskittaja();
                     this.kaivonsijaintiy - koko * 3 + pala.getY() * koko,
                     koko, koko, true);
         }
@@ -102,8 +106,8 @@ public class Piirtaja extends JPanel {
         g.drawString("POINTS :" + this.pisteet, koko, koko * 2);
     }
 
-    public void setLukitusaika(Pelilaskuri lukitusaika) {
-        this.lukitusmittari = lukitusaika;
+    public void setLukitusmittari(Pelilaskuri lukitusmittari) {
+        this.lukitusmittari = lukitusmittari;
     }
 
     private void piirraLukitusmittari(Graphics g) {
@@ -115,6 +119,14 @@ public class Piirtaja extends JPanel {
                     this.kaivonsijaintiy + (this.kaivo.getKorkeus() + 2) * koko);
         }
     }
+    
+    private void piirraLukkiutuminen(Graphics g) {
+        g.setColor(Color.WHITE);
+        for (Pala pala : this.kaivo.getTetrimino().getPalat()) {
+            g.fill3DRect((pala.getX() + 1) * koko + this.kaivonsijaintix,
+                            pala.getY() * koko + this.kaivonsijaintiy, koko, koko, true);
+        }
+    }
 
     public void setPisteet(int pisteet) {
         this.pisteet = pisteet;
@@ -122,5 +134,9 @@ public class Piirtaja extends JPanel {
 
     public void setLevelLaskuri(Levellaskuri level) {
         this.level = level;
+    }
+
+    public void setLukitusPiirretaan(boolean b) {
+        this.lukitus = b;
     }
 }

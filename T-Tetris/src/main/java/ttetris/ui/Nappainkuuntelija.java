@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import ttetris.logiikka.Kaivo;
 import ttetris.logiikka.Pelilaskuri;
+import ttetris.logiikka.Tetrispeli;
 
 public class Nappainkuuntelija implements KeyListener {
 
@@ -15,6 +16,7 @@ public class Nappainkuuntelija implements KeyListener {
     private boolean voikoOhjata;
     private List<Nappaimet> komennot;
     private Pelilaskuri lukitusmittari;
+    private Tetrispeli peli;
 
     public Nappainkuuntelija() {
         this.voikoOhjata = true;
@@ -23,6 +25,10 @@ public class Nappainkuuntelija implements KeyListener {
 
     public void setVoikoOhjata(boolean voikoOhjata) {
         this.voikoOhjata = voikoOhjata;
+    }
+
+    public void setTetrispeli(Tetrispeli peli) {
+        this.peli = peli;
     }
 
     public void setTetrispeliintarvittavat(Kaivo kaivo, Pelilaskuri lukitusmittari) {
@@ -55,9 +61,15 @@ public class Nappainkuuntelija implements KeyListener {
                 this.piirtaja.repaint();
             }
             if (e.getKeyCode() == KeyEvent.VK_S | e.getKeyCode() == KeyEvent.VK_DOWN) {
-                this.kaivo.tetriminoAlas();
-                this.lukitusmittari.aikaAlkuTilaan(false);
-                this.piirtaja.repaint();
+                if (this.peli.getLukitusmittari().getOnkoaktiivinen() & (this.kaivo.lukittuuko())) {
+                    this.peli.aloitaLukitusAika();
+                } else if (this.kaivo.lukittuuko()) {
+                    this.peli.getLukitusmittari().setOnkoaktiivinen(true);
+                } else {
+                    this.peli.getLukitusmittari().setOnkoaktiivinen(false);
+                    this.peli.getTippuukoTetrimino().aikaAlkuTilaan(false);
+                    this.kaivo.tetriminoAlas();
+                }
             }
             if (e.getKeyCode() == KeyEvent.VK_M | e.getKeyCode() == KeyEvent.VK_Z) {
                 this.kaivo.tetriminoVastapaivaan();
