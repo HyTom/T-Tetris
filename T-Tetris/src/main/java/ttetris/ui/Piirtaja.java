@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import javax.swing.JPanel;
 import ttetris.logiikka.Kaivo;
+import ttetris.logiikka.Levellaskuri;
 import ttetris.tetriminot.Pala;
 import ttetris.tetriminot.Tetrimino;
 
@@ -15,10 +16,10 @@ public class Piirtaja extends JPanel {
     private int ikkunankorkeus;
     private int kaivonsijaintix;
     private int kaivonsijaintiy;
-    private int level;
     private Tetrimino tetrimino;
     private int lukitus;
     private int pisteet;
+    private Levellaskuri level;
 
     public Piirtaja() {
         super.setBackground(Color.BLACK);
@@ -97,12 +98,8 @@ public class Piirtaja extends JPanel {
 
     private void PiirraLevelJaPisteet(Graphics g) {
         g.setColor(Color.WHITE);
-        g.drawString("LEVEL :" + level, koko, koko);
+        g.drawString("LEVEL :" + this.level.toString(), koko, koko);
         g.drawString("POINTS :" + this.pisteet, koko, koko * 2);
-    }
-
-    public void setLevel(int level) {
-        this.level = level;
     }
 
     public void setLukitus(int lukitus) {
@@ -121,5 +118,9 @@ public class Piirtaja extends JPanel {
 
     public void setPisteet(int pisteet) {
         this.pisteet = pisteet;
+    }
+
+    public void setLevelLaskuri(Levellaskuri level) {
+        this.level = level;
     }
 }

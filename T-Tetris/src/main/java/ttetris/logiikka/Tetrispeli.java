@@ -20,7 +20,7 @@ public class Tetrispeli implements ActionListener {
     private RandomTetrimino randomoija;
     private Tetrimino tetrimino;
     private Piirtaja piirtaja;
-    private int level;
+    private Levellaskuri level;
     private int tippuuko;
     private int ruudunTyhjennys;
     private Nappainkuuntelija nappainkuuntelija;
@@ -35,7 +35,7 @@ public class Tetrispeli implements ActionListener {
         this.kaivo = new Kaivo(10, 20);
         this.randomoija = new RandomTetrimino();
         this.tetrimino = this.randomoija.annaRandomTetrimino();
-        this.level = 0;
+        this.level = new Levellaskuri();
         this.tippuuko = 0;
         this.lukitus = 30;
         this.peliOdottaaTyhjennysta = false;
@@ -89,6 +89,7 @@ public class Tetrispeli implements ActionListener {
         this.piirtaja = piirtaja;
         this.piirtaja.setKaivo(this.kaivo);
         this.piirtaja.setTetrimino(this.tetrimino);
+        this.piirtaja.setLevelLaskuri(this.level);
         annaPiirtajalleLevelJaPisteet();
     }
 
@@ -166,9 +167,7 @@ public class Tetrispeli implements ActionListener {
         if (this.ruudunTyhjennys == 60) {
             int montarivia = this.kaivo.tyhjennaTaydetRivit();
             this.pisteet = this.pisteet + montarivia;
-            if (montarivia > 1) {
-                this.level = this.level + montarivia;
-            }
+            this.level.kasvataLeveliaTyhjennetyilla(montarivia);
         }
         this.piirtaja.repaint();
         this.ruudunTyhjennys--;
@@ -182,7 +181,7 @@ public class Tetrispeli implements ActionListener {
     }
 
     private boolean generoiUusiTetrimino() {
-        this.level++;
+        this.level.kasvataLevelia();
         annaPiirtajalleLevelJaPisteet();
         this.kaivo.setTetrimino(this.tetrimino);
         this.tetrimino = this.randomoija.annaRandomTetrimino();
@@ -218,7 +217,7 @@ public class Tetrispeli implements ActionListener {
         int palautettava = 0;
         int avain = 0;
         for (Integer key : this.painovoimat.keySet()) {
-            if (this.level >= key & avain <= key) {
+            if (this.level.getLevel() >= key & avain <= key) {
                 avain = key;
                 palautettava = this.painovoimat.get(key);
             }
@@ -227,7 +226,6 @@ public class Tetrispeli implements ActionListener {
     }
 
     private void annaPiirtajalleLevelJaPisteet() {
-        this.piirtaja.setLevel(this.level);
         this.piirtaja.setPisteet(this.pisteet);
     }
 
