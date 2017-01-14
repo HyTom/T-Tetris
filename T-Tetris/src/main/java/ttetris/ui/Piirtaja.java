@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import javax.swing.JPanel;
 import ttetris.logiikka.Kaivo;
 import ttetris.logiikka.Levellaskuri;
+import ttetris.logiikka.Pelilaskuri;
 import ttetris.tetriminot.Pala;
 import ttetris.tetriminot.Tetrimino;
 
@@ -17,14 +18,13 @@ public class Piirtaja extends JPanel {
     private int kaivonsijaintix;
     private int kaivonsijaintiy;
     private Tetrimino tetrimino;
-    private int lukitus;
+    private Pelilaskuri lukitusmittari;
     private int pisteet;
     private Levellaskuri level;
 
     public Piirtaja() {
         super.setBackground(Color.BLACK);
         this.koko = 20;
-        this.lukitus = 31;
         this.pisteet = 0;
     }
 
@@ -38,7 +38,7 @@ public class Piirtaja extends JPanel {
         piirraKaivo(g);
         piirraSeuraavaPala(g);
         PiirraLevelJaPisteet(g);
-        piirraLukitus(g);
+        piirraLukitusmittari(g);
     }
 
     private void piirraSeinat(Graphics g) {
@@ -102,16 +102,16 @@ public class Piirtaja extends JPanel {
         g.drawString("POINTS :" + this.pisteet, koko, koko * 2);
     }
 
-    public void setLukitus(int lukitus) {
-        this.lukitus = lukitus;
+    public void setLukitusaika(Pelilaskuri lukitusaika) {
+        this.lukitusmittari = lukitusaika;
     }
 
-    private void piirraLukitus(Graphics g) {
-        if (this.lukitus < 31) {
+    private void piirraLukitusmittari(Graphics g) {
+        if (this.lukitusmittari.onkoAikaaKulunut()) {
             g.drawLine(this.kaivonsijaintix,
                     this.kaivonsijaintiy + (this.kaivo.getKorkeus() + 2) * koko,
                     this.kaivonsijaintix + (this.kaivo.getLeveys() + 2) * koko
-                    / 30 * this.lukitus,
+                    / 30 * this.lukitusmittari.getAika(),
                     this.kaivonsijaintiy + (this.kaivo.getKorkeus() + 2) * koko);
         }
     }

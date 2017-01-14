@@ -159,7 +159,7 @@ public class Kaivo {
             this.tetrimino = null;
         }
     }
-
+    
     private void tyhjentyykoKaivo() {
         for (int y = 0; y < this.korkeus; y++) {
             int taytetyt = 0;

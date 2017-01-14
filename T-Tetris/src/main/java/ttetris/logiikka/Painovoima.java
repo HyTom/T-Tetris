@@ -51,7 +51,7 @@ public class Painovoima {
         painovoimat.put(500, 5120);
     }
 
-    /*
+    /**
     *Palauttaa Tetrispelin leveliä vastaavan painovoiman.
     */
     public int annaPainovoima(int level) {
