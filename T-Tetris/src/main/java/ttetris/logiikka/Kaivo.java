@@ -145,10 +145,7 @@ public class Kaivo {
     /**
      * Liikuttaa viimeksi annettua Tetrimino-oliota kaivossa askeleen alas. Jos
      * ei mahdollista, niin asettaa nykyisen Tetrimino-olion arvoksi null, eli
-     * lukittaa Tetriminon Kaivoon. Kysyy myös metodilta tyhjentyykoKaivo() että
-     * onko palan lukituksen jälkeen käynyt niin että jokin kaivon riveistä on
-     * täytetty. Jos niin on, tyhjentaakoKaivo() asettaa boolean atribuutin
-     * pitaatyhjentaa arvoksi true.
+     * lukittaa Tetriminon Kaivoon.
      */
     public void tetriminoAlas() {
         this.tetrimino.alas();
@@ -158,12 +155,14 @@ public class Kaivo {
             this.tetrimino.alas();
             this.tetriminoRuudukkoon();
         } else {
-            tyhjentyykoKaivo();
             this.tetrimino = null;
         }
     }
-    
-    private void tyhjentyykoKaivo() {
+    /**
+     * Katsoo pitääkö kaivoa tyhjentää. Jos pitää, asettaa this.pitaakotyhjentaa
+     * arvoksi true;
+     */
+    public void tyhjentyykoKaivo() {
         for (int y = 0; y < this.korkeus; y++) {
             int taytetyt = 0;
             for (int x = 0; x < this.leveys; x++) {

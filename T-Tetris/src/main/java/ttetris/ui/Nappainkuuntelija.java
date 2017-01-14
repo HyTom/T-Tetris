@@ -15,6 +15,7 @@ public class Nappainkuuntelija implements KeyListener {
     private boolean pelipaattyy;
     private boolean voikoOhjata;
     private List<Nappaimet> komennot;
+  
     private Pelilaskuri lukitusmittari;
     private Tetrispeli peli;
 
@@ -54,11 +55,9 @@ public class Nappainkuuntelija implements KeyListener {
         if (this.voikoOhjata & this.kaivo.getTetrimino() != null & !this.pelipaattyy) {
             if (e.getKeyCode() == KeyEvent.VK_A | e.getKeyCode() == KeyEvent.VK_LEFT) {
                 this.kaivo.tetriminoVasemmalle();
-                this.piirtaja.repaint();
             }
             if (e.getKeyCode() == KeyEvent.VK_D | e.getKeyCode() == KeyEvent.VK_RIGHT) {
                 this.kaivo.tetriminoOikealle();
-                this.piirtaja.repaint();
             }
             if (e.getKeyCode() == KeyEvent.VK_S | e.getKeyCode() == KeyEvent.VK_DOWN) {
                 if (this.peli.getLukitusmittari().getOnkoaktiivinen() & (this.kaivo.lukittuuko())) {
@@ -73,15 +72,12 @@ public class Nappainkuuntelija implements KeyListener {
             }
             if (e.getKeyCode() == KeyEvent.VK_M | e.getKeyCode() == KeyEvent.VK_Z) {
                 this.kaivo.tetriminoVastapaivaan();
-                this.piirtaja.repaint();
             }
             if (e.getKeyCode() == KeyEvent.VK_COMMA | e.getKeyCode() == KeyEvent.VK_X) {
                 this.kaivo.tetriminoMyotapaivaan();
-                this.piirtaja.repaint();
             }
             if (e.getKeyCode() == KeyEvent.VK_PERIOD | e.getKeyCode() == KeyEvent.VK_C) {
                 this.kaivo.tetriminoVastapaivaan();
-                this.piirtaja.repaint();
             }
         }
     }

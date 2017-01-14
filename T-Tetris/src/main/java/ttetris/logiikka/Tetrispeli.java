@@ -156,28 +156,37 @@ public class Tetrispeli implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (this.lukitusaika.getOnkoaktiivinen()) {
-            suoritaLukitusAika();
-        } else {
+        boolean jatketaanko = suoritaLukitusJaTyhjennys();
+        if (jatketaanko) {
+            if (this.kaivo.getTetrimino() == null) {
+                pelipaattyy = generoiUusiTetrimino();
+            }
+            if (!this.pelipaattyy) {
+                liikkuukoTetriminoAlas();
+                this.piirtaja.repaint();
+            } else {
+                lopetaPeli();
+            }
+            this.piirtaja.repaint();
+        }
+    }
+
+    private boolean suoritaLukitusJaTyhjennys() {
+        if (this.lukitusaika.getOnkoaktiivinen()
+                | this.kaivo.getPitaakoTyhjentaa()
+                | (this.ruudunTyhjennys.getOnkoaktiivinen())) {
             if (this.kaivo.getPitaakoTyhjentaa()) {
                 this.ruudunTyhjennys.setOnkoaktiivinen(true);
             }
             if (this.ruudunTyhjennys.getOnkoaktiivinen()) {
                 kaivoaPitaaTyhjentaa();
-            } else {
-                if (this.kaivo.getTetrimino() == null) {
-                    pelipaattyy = generoiUusiTetrimino();
-                }
-                this.piirtaja.repaint();
-                if (!this.pelipaattyy) {
-                    liikkuukoTetriminoAlas();
-                    this.piirtaja.repaint();
-                } else {
-                    lopetaPeli();
-                }
             }
+            if (this.lukitusaika.getOnkoaktiivinen()) {
+                suoritaLukitusAika();
+            }
+            return false;
         }
-
+        return true;
     }
 
     private void kaivoaPitaaTyhjentaa() {
@@ -239,12 +248,13 @@ public class Tetrispeli implements ActionListener {
         this.nappainkuuntelija.setVoikoOhjata(false);
         this.lukitusmittari.aikaAlkuTilaan(false);
         this.lukitusaika.setOnkoaktiivinen(true);
+        this.kaivo.tyhjentyykoKaivo();
     }
 
     public void suoritaLukitusAika() {
         this.piirtaja.repaint();
         this.lukitusaika.vahennaAikaaYhdellä();
-        if (this.lukitusaika.getAika() > 10) {
+        if (this.lukitusaika.getAika() > 15) {
             this.piirtaja.setLukitusPiirretaan(true);
         } else {
             this.piirtaja.setLukitusPiirretaan(false);
@@ -253,7 +263,7 @@ public class Tetrispeli implements ActionListener {
             this.lukitusaika.aikaAlkuTilaan(false);
             this.lukitusaika.setOnkoaktiivinen(false);
             this.nappainkuuntelija.setVoikoOhjata(true);
-            this.kaivo.tetriminoAlas();
+            this.kaivo.setTetrimino(null);
         }
     }
 
