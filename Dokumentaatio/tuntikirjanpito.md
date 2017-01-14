@@ -21,5 +21,5 @@ Päivä | Tunnit | Kuvaus
 10.12.2016 | 3h | Peli paukutti null pointtereita jos painoi suuntanäppäintä kun palaa ei voinut liikuttaa koska pelillä ei ollut palaa mitä liikuttaa. Se ei tee sitä enään. Kun muutti Piirtaja luokan kohdassa jossa pelin paloja ja seiniä piirrettiin metodin fillRect() metodiksi fill3DRect() niin peli muuttui taianomaisesti 100 kertaa tyylikkäämmän näköiseksi. Peli näyttää nyt levelin ja ulkonäköä muutettiin. Korjattiin bugeja. Peli näyttää seuraavan palan.
 11.12.2016 | 8h | Sotkenut koodia ja lisännyt pieniä muutoksia. Pelissä on nyt palanlukitus systeemi.
 13.12.2016 | 6h | Peliä voi pelata useita kertoja loputtomasti ilman että sulkee peliä. Painovoima toimii oikein.
-14.12.2016 | 1h | Pelin level laskin toimii oikein.
+14.12.2016 | 1h | Pelin level laskin toimii oikein. Painovoima on oma luokkansa.
 ... | ... | ...
