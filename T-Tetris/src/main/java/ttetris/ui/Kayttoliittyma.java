@@ -61,10 +61,10 @@ public class Kayttoliittyma implements Runnable {
 
     private void luoUusiPeli() {
         try {
-                    Thread.sleep(5000);
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(Kayttoliittyma.class.getName()).log(Level.SEVERE, null, ex);
-                }
+            Thread.sleep(5000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Kayttoliittyma.class.getName()).log(Level.SEVERE, null, ex);
+        }
         Tetrispeli peli = new Tetrispeli();
         this.peli = peli;
         this.pelinAloittaja = new PelinAloittaja(this.frame, peli);
@@ -73,7 +73,7 @@ public class Kayttoliittyma implements Runnable {
         peli.setNappainkuuntelija(nappaimet);
         this.frame.getContentPane().removeAll();
         luoKomponentit(this.frame.getContentPane());
-        
+
         this.frame.pack();
         this.frame.setVisible(true);
     }

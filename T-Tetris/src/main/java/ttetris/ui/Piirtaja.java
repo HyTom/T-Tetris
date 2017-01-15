@@ -39,7 +39,7 @@ public class Piirtaja extends JPanel {
         piirraSeinat(g);
         piirraKaivo(g);
         piirraSeuraavaPala(g);
-        PiirraLevelJaPisteet(g);
+        piirraLevelJaPisteet(g);
         piirraLukitusmittari(g);
         if (this.lukitus) {
             piirraLukkiutuminen(g);
@@ -100,7 +100,7 @@ public class Piirtaja extends JPanel {
         this.tetrimino = tetrimino;
     }
 
-    private void PiirraLevelJaPisteet(Graphics g) {
+    private void piirraLevelJaPisteet(Graphics g) {
         g.setColor(Color.WHITE);
         g.drawString("LEVEL :" + this.level.toString(),
                 this.kaivonsijaintix + this.kaivo.getLeveys() * koko + 3 * koko,

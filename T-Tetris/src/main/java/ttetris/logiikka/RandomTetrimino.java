@@ -21,6 +21,10 @@ public class RandomTetrimino {
     List<Tetrimino> historia;
     boolean onkorajoituksia;
 
+    /**
+     * Tetrispelin tetris-palojen randomoija. Noudattaa samoja sääntöjä kuin
+     * ensimmäinen Tetris Grand Master.
+     */
     public RandomTetrimino() {
         this.random = new Random();
         historia = new ArrayList();
@@ -33,9 +37,9 @@ public class RandomTetrimino {
      * pitää, se yrittää max 4 kertaa kunnes sopiva pala löytyy. Sen jälkeen se
      * lisää palan historiaan ja poistaa vanhimman. Ensimmäisen palan
      * antamisella on rajoituksia, se ei voi olla koskaan S, Z tai O.
+     * @return Valittu Tetrimino
      */
     public Tetrimino annaRandomTetrimino() {
-        System.out.println(this.historia.size());
         Tetrimino palautettava;
         int yrityksia = 0;
         while (true) {
@@ -44,13 +48,11 @@ public class RandomTetrimino {
             if (onkorajoituksia) {
                 palautettava = alkuRajoitukset(palautettava);
             }
-            System.out.println("katsotaan onko historiassa pala " + palautettava.getClass());
             if (tarkistetaanHistoria(palautettava)) {
                 paivitaHistoria(palautettava);
                 onkorajoituksia = false;
                 return palautettava;
             } else if (yrityksia >= 4) {
-                System.out.println("Pakko");
                 paivitaHistoria(palautettava);
                 onkorajoituksia = false;
                 return palautettava;
@@ -60,12 +62,10 @@ public class RandomTetrimino {
 
     private boolean tarkistetaanHistoria(Tetrimino palautettava) {
         for (Tetrimino tetrimino : historia) {
-            System.out.println("historia: " + tetrimino.getClass());
             if (tetrimino.getClass().equals(palautettava.getClass())) {
                 return false;
             }
         }
-        System.out.println("Ei ollut historiassa " + palautettava.getClass());
         return true;
     }
 
@@ -79,7 +79,6 @@ public class RandomTetrimino {
             if (palautettava.getClass().equals(annaS().getClass())
                     | palautettava.getClass().equals(annaZ().getClass())
                     | palautettava.getClass().equals(annaO().getClass())) {
-                System.out.println("YEP");
                 palautettava = valitseRandomTetrimino();
             } else {
                 break;
@@ -143,6 +142,11 @@ public class RandomTetrimino {
         return o;
     }
 
+    /**
+     * Käytä Random luokan nextInt() metodia.
+     * @param i pois suljettu luku
+     * @return random luku joka alle i
+     */
     public int annaRandomLukuValilta(int i) {
         return random.nextInt(i);
     }

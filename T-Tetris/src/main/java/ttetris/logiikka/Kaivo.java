@@ -75,6 +75,7 @@ public class Kaivo {
 
     /**
      * Tulostaa merkkeinä miltä pelikenttä tällä hetkellä näyttää.
+     * Käytetään jos halutaan testata käsin.
      */
     public void tulostaKaivo() {
         //käytetään testauksessa
@@ -160,7 +161,8 @@ public class Kaivo {
     }
     /**
      * Katsoo pitääkö kaivoa tyhjentää. Jos pitää, asettaa this.pitaakotyhjentaa
-     * arvoksi true;
+     * arvoksi true; Tarkoitettu käytettäväksi metodin tyhjennaTaydetRivit()
+     * joka suorittaa täysien rivien tyhjentämistä.
      */
     public void tyhjentyykoKaivo() {
         for (int y = 0; y < this.korkeus; y++) {
@@ -331,7 +333,9 @@ public class Kaivo {
     }
 
     /**
-     * Tyhjentaa taydet rivit, mutta ei tiputa palasia.
+     * Tyhjentaa taydet rivit, mutta ei tiputa palasia. Palasten tiputtamiseen
+     * kuuluu käyttää tämän metodin käytön jälkeen metodia 
+     * tiputaPalojaTyhjennetyilleRiveille().
      *
      * @return Monta rivia tyhjennettiin.
      */
@@ -359,7 +363,8 @@ public class Kaivo {
     }
 
     /**
-     * Tiputtaa paloja jotka ovat tyhjennettyjen rivien yläpuolella.
+     * Tiputtaa paloja jotka ovat tyhjennettyjen rivien yläpuolella niin monta 
+     * kertaa alas kun on viimeksi tyhjennettyjä rivejä.
      */
     public void tiputaPalojaTyhjennetyilleRiveille() {
         for (Integer i : this.tyhjennetytRivit) {

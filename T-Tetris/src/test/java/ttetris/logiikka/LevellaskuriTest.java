@@ -50,4 +50,12 @@ public class LevellaskuriTest {
         this.level.kasvataLevelia();
         assertEquals(999, this.level.getLevel());
     }
+    
+    public void pelinMaxLevelKasvaa() {
+        for (int i = 0; i < 898; i++) {
+            this.level.kasvataLeveliaTyhjennetyilla(i);
+        }
+        this.level.kasvataLeveliaTyhjennetyilla(5);
+        assertEquals("903 / 999", this.level.toString());
+    }
 }

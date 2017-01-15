@@ -279,6 +279,8 @@ public class KaivoTest {
             kaivo.tetriminoOikealle();
             kaivo.tetriminoAlas();
         }
+        kaivo.tulostaKaivo();
+        kaivo.tyhjentyykoKaivo();
         assertEquals(true, kaivo.getPitaakoTyhjentaa());
     }
 

@@ -36,12 +36,13 @@ public class Pelilaskuri {
     /**
      * Vahentaa asetettua aikaa yhdellä.
      */
-    public void vahennaAikaaYhdellä() {
+    public void vahennaAikaaYhdella() {
         this.aika--;
     }
 
     /**
-     * Palauttaa onko aika kulunut loppuun;
+     * Palauttaa onko aika kulunut loppuun.
+     * @return Onko loppu.
      */
     public boolean onkoAikaKulunutLoppuun() {
         if (this.aika <= 0) {

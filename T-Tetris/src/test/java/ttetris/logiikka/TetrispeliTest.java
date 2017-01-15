@@ -6,7 +6,10 @@ import org.junit.Test;
 import ttetris.logiikka.Kaivo;
 import ttetris.logiikka.RandomTetrimino;
 import ttetris.logiikka.Tetrispeli;
+import ttetris.tetriminot.O;
 import ttetris.tetriminot.Tetrimino;
+import ttetris.ui.Nappainkuuntelija;
+import ttetris.ui.Piirtaja;
 
 public class TetrispeliTest {
 
@@ -15,6 +18,8 @@ public class TetrispeliTest {
     @Before
     public void setUp() {
         peli = new Tetrispeli();
+        peli.setPiirtaja(new Piirtaja());
+        peli.setNappainkuuntelija(new Nappainkuuntelija());
     }
 
     @Test
@@ -44,6 +49,36 @@ public class TetrispeliTest {
         Tetrimino palikka = peli.getTetrimino();
         peli.aloita();
         peli.getKaivo().getTetrimino().equals(palikka);
+    }
+
+    @Test
+    public void peliLopetusToimii1() {
+        peli.getKaivo().setTetrimino(new O());
+        peli.getKaivo().uusiTetriminoKaivoon();
+        peli.generoiUusiTetrimino();
+
+        assertEquals(true, peli.paattyikoPeli());
+    }
+
+    @Test
+    public void peliLopetusToimii2() {
+        peli.generoiUusiTetrimino();
+
+        assertEquals(false, peli.paattyikoPeli());
+    }
+
+    @Test
+    public void lukitusAikaToimii() {
+        O o = new O();
+        peli.getKaivo().setTetrimino(o);
+        assertEquals(o, this.peli.getKaivo().getTetrimino());
+        peli.suoritaLukitusAika();
+        assertEquals(o, this.peli.getKaivo().getTetrimino());
+        peli.aloitaLukitusAika();
+        for (int i = 0; i < 30; i++) {
+            peli.suoritaLukitusAika();
+        }
+        assertEquals(null, this.peli.getKaivo().getTetrimino());
     }
 
 }

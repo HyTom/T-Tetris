@@ -2,8 +2,6 @@ package ttetris.ui;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.ArrayList;
-import java.util.List;
 import ttetris.logiikka.Kaivo;
 import ttetris.logiikka.Pelilaskuri;
 import ttetris.logiikka.Tetrispeli;
@@ -11,17 +9,13 @@ import ttetris.logiikka.Tetrispeli;
 public class Nappainkuuntelija implements KeyListener {
 
     private Kaivo kaivo;
-    private Piirtaja piirtaja;
     private boolean pelipaattyy;
     private boolean voikoOhjata;
-    private List<Nappaimet> komennot;
   
-    private Pelilaskuri lukitusmittari;
     private Tetrispeli peli;
 
     public Nappainkuuntelija() {
         this.voikoOhjata = true;
-        this.komennot = new ArrayList();
     }
 
     public void setVoikoOhjata(boolean voikoOhjata) {
@@ -35,11 +29,6 @@ public class Nappainkuuntelija implements KeyListener {
     public void setTetrispeliintarvittavat(Kaivo kaivo, Pelilaskuri lukitusmittari) {
         this.kaivo = kaivo;
         this.pelipaattyy = false;
-        this.lukitusmittari = lukitusmittari;
-    }
-
-    public void setPiirtaja(Piirtaja piirtaja) {
-        this.piirtaja = piirtaja;
     }
 
     public void setPelipaattyy(boolean pelipaattyy) {

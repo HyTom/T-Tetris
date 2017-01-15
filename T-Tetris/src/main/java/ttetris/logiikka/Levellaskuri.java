@@ -23,7 +23,7 @@ public class Levellaskuri {
      * Kasvattaa Levellaskuria halutulla arvolla. Jos yli maximin, kasvattaa
      * maximia.
      *
-     * @param Luku jolla kasvatetaan.
+     * @param i Luku jolla kasvatetaan.
      */
     public void kasvataLeveliaTyhjennetyilla(int i) {
         this.level += i;

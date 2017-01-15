@@ -1,6 +1,5 @@
 package ttetris.ui;
 
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
@@ -28,7 +27,6 @@ public class PelinAloittaja implements ActionListener {
         Piirtaja piirtaja = new Piirtaja();
         this.frame.getContentPane().add(piirtaja);
         this.frame.addKeyListener(this.peli.getNappainkuuntelija());
-        this.peli.getNappainkuuntelija().setPiirtaja(piirtaja);
         this.frame.setVisible(true);
         this.peli.getNappainkuuntelija().setTetrispeli(this.peli);
         this.frame.requestFocusInWindow();
@@ -40,8 +38,12 @@ public class PelinAloittaja implements ActionListener {
         piirtaja.annaIkkunanKoko(this.ikkunankokox, this.ikkunankokoy);
         this.timer.start();
     }
-
-    void annaIkkunanKoko(int x, int y) {
+/**
+ * Antaa Kayttoliityma luokan määrittämän ikkunan koon PelinAloittajalle.
+ * @param x leveys
+ * @param y korkeus
+ */
+    public void annaIkkunanKoko(int x, int y) {
         this.ikkunankokox = x;
         this.ikkunankokoy = y;
     }

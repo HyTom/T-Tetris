@@ -52,8 +52,10 @@ public class Painovoima {
     }
 
     /**
-    *Palauttaa Tetrispelin leveliä vastaavan painovoiman.
-    */
+     * Palauttaa Tetrispelin leveliä vastaavan painovoiman.
+     * @param level Nykyinen leveli
+     * @return Int painovoima
+     */
     public int annaPainovoima(int level) {
         int palautettava = 0;
         int avain = 0;

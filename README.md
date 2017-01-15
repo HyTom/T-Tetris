@@ -2,11 +2,7 @@
 
 Tetris Grand Masteria jäljittelevä java-tetris.
 
-Käyttöohjeet:
-Paina Aloita nappia aloittaaksesi.
-Liikuta tetriminoa wasd- tai nuolinapeista.
-Käännä palaa m,. tai zxc napeista.
-Ensimmäinen ja kolmas nappi kääntävät kumpikin palaa samaan suuntaan.
+[Käyttöohjeet](Kaytto-ohjeet.md)
 
 **Dokumentaatio**
 
@@ -14,6 +10,10 @@ Ensimmäinen ja kolmas nappi kääntävät kumpikin palaa samaan suuntaan.
 
 [Tuntikirjanpito](Dokumentaatio/tuntikirjanpito.md)
 
-[Pit-raportti](https://rawgit.com/HyTom/T-Tetris/master/Dokumentaatio/pit/201701112343/index.html)
+[Pit-raportti](https://rawgit.com/HyTom/T-Tetris/master/Dokumentaatio/pit/201701152306/index.html)
 
-[Checkstyle-raportti](https://rawgit.com/HyTom/T-Tetris/master/Dokumentaatio/checkstyle/site/checkstyle.html)
+[Checkstyle-raportti](https://rawgit.com/HyTom/T-Tetris/master/Dokumentaatio/site/checkstyle.html)
+
+[Javadoc](https://rawgit.com/GyTom/T-Tetris/master/Dokumentaatio/site/apidocs/index.html)
+
+[Testausdokumentaatio](Dokumentaatio/Testausdokumentaatio.md)
