@@ -126,7 +126,7 @@ Taustoja - Peliin voisi heittää vaikka metsäkuvia taustoiksi. Kuvan tulisi va
 Kontrollit voi vaihtaa - Main menussa tulisi olla pelin aloituksen ja highscore listan
 lisäksi tapa voida vaihtaa pelinappeja. 
 
-Sekvenssikaavioita:
+**Sekvenssikaavioita**
 
 Käskettävän tetriminon vaihtaminen kaivossa.
 ![Alt text](SekvenssikaavioTetriminonVaihtaminen.jpg)

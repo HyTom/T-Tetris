@@ -14,6 +14,6 @@ Tetris Grand Masteria jäljittelevä java-tetris.
 
 [Checkstyle-raportti](https://rawgit.com/HyTom/T-Tetris/master/Dokumentaatio/site/checkstyle.html)
 
-[Javadoc](https://rawgit.com/GyTom/T-Tetris/master/Dokumentaatio/site/apidocs/index.html)
+[Javadoc](https://rawgit.com/HyTom/T-Tetris/master/Dokumentaatio/site/apidocs/index.html)
 
-[Testausdokumentaatio](Dokumentaatio/Testausdokumentaatio.md)
+[Testausdokumentaatio](Dokumentaatio/Testausdokumentaatio)
