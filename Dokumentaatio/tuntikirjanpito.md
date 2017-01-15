@@ -22,4 +22,5 @@ Päivä | Tunnit | Kuvaus
 11.12.2016 | 8h | Sotkenut koodia ja lisännyt pieniä muutoksia. Pelissä on nyt palanlukitus systeemi.
 13.12.2016 | 6h | Peliä voi pelata useita kertoja loputtomasti ilman että sulkee peliä. Painovoima toimii oikein.
 14.12.2016 | 5h | Pelin level laskin toimii oikein. Painovoima on oma luokkansa. Uusi luokka, Pelilaskuri hoitaa laskemista vaativia asioita hieman vähentäen Tetrispeli luokan työtaakkaa. Lukitus systeemi toimii niinkuin alun perin haluttiin. Lukitusmittarin jälkeen tulee aina pieni viive ennekuin seuraava pala tulee, ja pala muuttaa väriään hetkeksi. Se toimii myös silloin kun kaivoa tyhjennetään, ja siitä tuli hieno efekti. 
+15.12.2016 | 2h | Randomoija joskin vähän kömpelö, toimii niinkuin pitää. Pisteet ja Level asetettu uudelle paikalle.
 ... | ... | ...

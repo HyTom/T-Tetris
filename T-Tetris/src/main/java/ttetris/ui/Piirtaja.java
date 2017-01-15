@@ -102,8 +102,12 @@ public class Piirtaja extends JPanel {
 
     private void PiirraLevelJaPisteet(Graphics g) {
         g.setColor(Color.WHITE);
-        g.drawString("LEVEL :" + this.level.toString(), koko, koko);
-        g.drawString("POINTS :" + this.pisteet, koko, koko * 2);
+        g.drawString("LEVEL :" + this.level.toString(),
+                this.kaivonsijaintix + this.kaivo.getLeveys() * koko + 3 * koko,
+                this.kaivonsijaintiy + this.kaivo.getKorkeus() * koko / 2);
+        g.drawString("POINTS :" + this.pisteet,
+                this.kaivonsijaintix + this.kaivo.getLeveys() * koko + 3 * koko,
+                this.kaivonsijaintiy + this.kaivo.getKorkeus() * koko / 2 + 2 * koko);
     }
 
     public void setLukitusmittari(Pelilaskuri lukitusmittari) {
@@ -119,12 +123,12 @@ public class Piirtaja extends JPanel {
                     this.kaivonsijaintiy + (this.kaivo.getKorkeus() + 2) * koko);
         }
     }
-    
+
     private void piirraLukkiutuminen(Graphics g) {
         g.setColor(Color.WHITE);
         for (Pala pala : this.kaivo.getTetrimino().getPalat()) {
             g.fill3DRect((pala.getX() + 1) * koko + this.kaivonsijaintix,
-                            pala.getY() * koko + this.kaivonsijaintiy, koko, koko, true);
+                    pala.getY() * koko + this.kaivonsijaintiy, koko, koko, true);
         }
     }
 
