@@ -172,15 +172,14 @@ public class Tetrispeli implements ActionListener {
 
     private void liikkuukoTetriminoAlas() {
         tippuukoTetrimino.vahennaAikaa(this.painovoima.annaPainovoima(this.level.getLevel()));
+        if (this.kaivo.lukittuuko()) {
+            this.lukitusmittari.setOnkoaktiivinen(true);
+        }
         if (tippuukoTetrimino.onkoAikaKulunutLoppuun()) {
             tippuukoTetrimino.aikaAlkuTilaan(true);
-            if (this.kaivo.lukittuuko()) {
-                this.lukitusmittari.setOnkoaktiivinen(true);
-            } else {
-                this.kaivo.tetriminoAlas();
-                this.lukitusmittari.aikaAlkuTilaan(false);
-                this.lukitusmittari.setOnkoaktiivinen(false);
-            }
+            this.kaivo.tetriminoAlas();
+            this.lukitusmittari.aikaAlkuTilaan(false);
+            this.lukitusmittari.setOnkoaktiivinen(false);
         }
         if (this.lukitusmittari.getOnkoaktiivinen()) {
             vahennaLukitusMittaria();

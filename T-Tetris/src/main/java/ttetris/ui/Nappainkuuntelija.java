@@ -55,7 +55,6 @@ public class Nappainkuuntelija implements KeyListener {
                     this.peli.getLukitusmittari().setOnkoaktiivinen(true);
                 } else {
                     this.peli.getLukitusmittari().setOnkoaktiivinen(false);
-                    this.peli.getTippuukoTetrimino().aikaAlkuTilaan(false);
                     this.kaivo.tetriminoAlas();
                 }
             }
